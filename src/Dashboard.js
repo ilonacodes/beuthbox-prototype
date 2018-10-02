@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigation} from './Navigation';
 import styled from 'react-emotion';
 import recentVideo from './img/recent-video-1.jpg';
-import {css} from 'emotion';
+import arrowRight from './img/arrow-right.svg.png';
 
 const ContentContainer = styled('div')`
   background-color: #222;
@@ -37,6 +37,43 @@ const Bullets = styled('div')`
   text-align: center;
 `;
 
+const VideosContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+`;
+
+const VideosByCategory = styled('div')`
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  flex-wrap: wrap;
+`;
+
+const Category = styled('div')`
+  color: #00A5A5;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+`;
+
+const Videos = styled('div')`
+
+  img:first-child {
+    margin-left: 0;
+  }
+  
+  img:last-child {
+    margin-right: 0;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 30px;
+  }
+  
+  img {
+    margin: 0 10px;
+  }
+`
+
 const Content = () => {
     return (
         <ContentContainer>
@@ -48,6 +85,41 @@ const Content = () => {
                 <Bullet />
                 <Bullet />
             </Bullets>
+            <VideosContainer>
+                <VideosByCategory>
+                    <Category>Neuerscheinungen</Category>
+                    <Videos>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src={arrowRight} alt=""/>
+                    </Videos>
+                </VideosByCategory>
+                <VideosByCategory>
+                    <Category>Empfehlungen der Redaktion</Category>
+                    <Videos>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src={arrowRight} alt=""/>
+                    </Videos>
+                </VideosByCategory>
+                <VideosByCategory>
+                    <Category>Derzeit beliebt</Category>
+                    <Videos>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src="https://via.placeholder.com/200x150"/>
+                        <img src={arrowRight} alt=""/>
+                    </Videos>
+                </VideosByCategory>
+            </VideosContainer>
         </ContentContainer>
     );
 };
