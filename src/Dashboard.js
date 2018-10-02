@@ -3,10 +3,12 @@ import {Navigation} from './Navigation';
 import styled from 'react-emotion';
 import recentVideo from './img/recent-video-1.jpg';
 import arrowRight from './img/arrow-right.svg.png';
+import facebook from './img/facebook.png';
+import instagram from './img/instagram.png';
 
 const ContentContainer = styled('div')`
   background-color: #222;
-  margin: 0 5px;
+  margin: 60px 5px 0 5px;
   padding: 25px 25px 40px 25px;
 `;
 
@@ -72,6 +74,20 @@ const Videos = styled('div')`
   img {
     margin: 0 10px;
   }
+`;
+
+const Footer = styled('div')`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #00A5A5;
+  height: 60px;
+  
+  img {
+    margin: 16px 30px 0 0;
+    width: 30px;
+    height: 30px;
+  }
 `
 
 const Content = () => {
@@ -129,6 +145,10 @@ export const Dashboard = () => {
         <div>
             <Navigation />
             <Content />
+            <Footer>
+                <img src={facebook} />
+                <img src={instagram} />
+            </Footer>
         </div>
     );
 };
