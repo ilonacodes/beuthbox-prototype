@@ -1,10 +1,14 @@
 import React from 'react';
 import {Navigation} from './Navigation';
 import styled from 'react-emotion';
-import recentVideo from './img/recent-video-1.jpg';
+import recentVideo1 from './img/recent-video-1.jpg';
+import recentVideo2 from './img/recent-video-2.jpeg';
+import recentVideo3 from './img/recent-video-3.jpeg';
 import arrowRight from './img/arrow-right.svg.png';
 import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
+import Carousel from 'nuka-carousel';
+import {css} from 'emotion';
 
 const ContentContainer = styled('div')`
   background-color: #222;
@@ -88,13 +92,31 @@ const Footer = styled('div')`
     width: 30px;
     height: 30px;
   }
-`
+`;
+
+const carouselStyle = css`
+  .slider-control-centerleft, 
+  .slider-control-centerright { 
+    display: none !important;
+  }
+  
+  .slider-control-bottomcenter button {
+    width: 100%;
+    color: #00A5A5 !important;
+    font-size: 60px !important;
+  }
+`;
+
 
 const Content = () => {
     return (
         <ContentContainer>
-            <RecentVideoCarousel>
-                <img src={recentVideo} alt=""/>
+            <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
+                <Carousel className={carouselStyle}>
+                    <img style={{height: '450px'}} src={recentVideo1} alt=""/>
+                    <img style={{height: '450px'}} src={recentVideo2} alt=""/>
+                    <img style={{height: '450px'}} src={recentVideo3} alt=""/>
+                </Carousel>
             </RecentVideoCarousel>
             <Bullets>
                 <Bullet />
