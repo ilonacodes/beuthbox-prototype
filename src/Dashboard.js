@@ -71,6 +71,18 @@ const VideosContainerImg = styled('div')`
   img {
     margin: 0 10px;
   }
+  
+  @media (min-width: 769px) and (max-width: 1025px) {
+    img {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    img {
+      width: 110px;
+    }
+  }
 `;
 
 const Footer = styled('div')`
@@ -109,6 +121,15 @@ const arrowNext = css`
      height: 80px;
      margin-bottom: 30px !important;
      cursor: pointer;
+     
+     @media (min-width: 768px) and (max-width: 1025px) {
+        width: 40px !important;
+        height: 40px !important;
+     } 
+     
+     @media (max-width: 769px) {
+        margin-bottom: 20px !important;
+     } 
 `;
 
 const arrowNextActive = css`
@@ -116,39 +137,39 @@ const arrowNextActive = css`
 `;
 
 class Videos extends React.Component {
-    constructor () {
+    constructor() {
         super();
 
         this.state = {
             currentImageIndex: 0,
             activeImage: false,
             images: [
-                "https://via.placeholder.com/200x150",
-                "https://via.placeholder.com/200x150",
-                "https://via.placeholder.com/200x150",
-                "https://via.placeholder.com/200x150",
-                "https://via.placeholder.com/200x150"
+                'https://via.placeholder.com/200x150',
+                'https://via.placeholder.com/200x150',
+                'https://via.placeholder.com/200x150',
+                'https://via.placeholder.com/200x150',
+                'https://via.placeholder.com/200x150'
             ],
             arrowNext: arrowRight
         };
 
-        this.nextSlide = this.nextSlide.bind(this)
+        this.nextSlide = this.nextSlide.bind(this);
     }
 
     nextSlide() {
         const lastIndex = this.state.images.length - 1;
-        const { currentImageIndex } = this.state;
-        const shouldResetIndex =  currentImageIndex === lastIndex;
+        const {currentImageIndex} = this.state;
+        const shouldResetIndex = currentImageIndex === lastIndex;
         const index = shouldResetIndex ? 0 : currentImageIndex + 1;
 
         this.setState({
             currentImageIndex: index,
             activeImage: true
-        })
+        });
     }
 
 
-    render () {
+    render() {
         return (
             <div>
                 {this.state.images.map((image, index) =>
@@ -172,27 +193,27 @@ const Content = () => {
                 </Carousel>
             </RecentVideoCarousel>
             <Bullets>
-                <Bullet />
-                <Bullet />
-                <Bullet />
+                <Bullet/>
+                <Bullet/>
+                <Bullet/>
             </Bullets>
             <VideosContainer>
                 <VideosByCategory>
                     <Category>Neuerscheinungen</Category>
                     <VideosContainerImg>
-                        <Videos />
+                        <Videos/>
                     </VideosContainerImg>
                 </VideosByCategory>
                 <VideosByCategory>
                     <Category>Empfehlungen der Redaktion</Category>
                     <VideosContainerImg>
-                        <Videos />
+                        <Videos/>
                     </VideosContainerImg>
                 </VideosByCategory>
                 <VideosByCategory>
                     <Category>Derzeit beliebt</Category>
                     <VideosContainerImg>
-                        <Videos />
+                        <Videos/>
                     </VideosContainerImg>
                 </VideosByCategory>
             </VideosContainer>
@@ -203,11 +224,11 @@ const Content = () => {
 export const Dashboard = () => {
     return (
         <div>
-            <Navigation />
-            <Content />
+            <Navigation/>
+            <Content/>
             <Footer>
-                <img src={facebook} />
-                <img src={instagram} />
+                <img src={facebook}/>
+                <img src={instagram}/>
             </Footer>
         </div>
     );
