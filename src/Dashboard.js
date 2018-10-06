@@ -5,6 +5,7 @@ import recentVideo1 from './img/recent-video-1.jpg';
 import recentVideo2 from './img/recent-video-2.jpeg';
 import recentVideo3 from './img/recent-video-3.jpeg';
 import arrowRight from './img/arrow-right.svg.png';
+import arrowLeft from './img/arrow-left.svg.png';
 import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
 import Carousel from 'nuka-carousel';
@@ -117,23 +118,23 @@ const carouselStyle = css`
 
 const arrowNext = css`
      margin-right: 0;
-     width: 80px;
-     height: 80px;
-     margin-bottom: 30px !important;
+     width: 30px;
+     height: 30px;
+     margin-bottom: 60px !important;
      cursor: pointer;
      
      @media (min-width: 768px) and (max-width: 1025px) {
         width: 40px !important;
         height: 40px !important;
+        margin-bottom: 40px !important;
+
      } 
      
      @media (max-width: 769px) {
-        margin-bottom: 20px !important;
+        width: 14px !important;
+        height: 14px !important;
+        margin-bottom: 30px !important;
      } 
-`;
-
-const arrowNextActive = css`
-     border: 2px solid #00A5A5;
 `;
 
 class Videos extends React.Component {
@@ -142,40 +143,61 @@ class Videos extends React.Component {
 
         this.state = {
             currentImageIndex: 0,
-            activeImage: false,
             images: [
-                'https://via.placeholder.com/200x150',
-                'https://via.placeholder.com/200x150',
-                'https://via.placeholder.com/200x150',
-                'https://via.placeholder.com/200x150',
-                'https://via.placeholder.com/200x150'
+                'https://via.placeholder.com/200x150?text=first',
+                'https://via.placeholder.com/200x150?text=second',
+                'https://via.placeholder.com/200x150?text=third',
+                'https://via.placeholder.com/200x150?text=fourth',
+                'https://via.placeholder.com/200x150?text=fifth',
+                'https://via.placeholder.com/200x150?text=sixth',
+                'https://via.placeholder.com/200x150?text=seventh',
+                'https://via.placeholder.com/200x150?text=eighth',
+                'https://via.placeholder.com/200x150?text=ninth',
+                'https://via.placeholder.com/200x150?text=tenth'
             ],
-            arrowNext: arrowRight
+            arrowNext: arrowRight,
+            arrowPrev: arrowLeft
         };
 
         this.nextSlide = this.nextSlide.bind(this);
+        this.prevSlide = this.prevSlide.bind(this);
+    }
+
+    prevSlide() {
+        const lastIndex = this.state.images.length - 1;
+        const resetIndex = this.state.currentImageIndex === 0;
+        const index = resetIndex ? lastIndex : this.state.currentImageIndex - 1;
+
+        this.setState({
+            currentImageIndex: index
+        })
     }
 
     nextSlide() {
         const lastIndex = this.state.images.length - 1;
-        const {currentImageIndex} = this.state;
-        const shouldResetIndex = currentImageIndex === lastIndex;
-        const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+        const resetIndex = this.state.currentImageIndex === lastIndex;
+        const index = resetIndex ? 0 : this.state.currentImageIndex + 1;
 
         this.setState({
-            currentImageIndex: index,
-            activeImage: true
+            currentImageIndex: index
         });
     }
 
 
     render() {
+        const index = this.state.currentImageIndex;
+        let firstFiveVideo = this.state.images.slice(index, index + 5);
+        if (firstFiveVideo.length < 5) {
+            firstFiveVideo = firstFiveVideo.concat(this.state.images.slice(0, 5 - firstFiveVideo.length))
+        }
+
         return (
             <div>
-                {this.state.images.map((image, index) =>
-                    <img src={image} alt="" className={this.state.currentImageIndex === index ? arrowNextActive : ''}/>
+                <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
+                {firstFiveVideo.map((image, index) =>
+                    <img key={index} src={image} alt=""/>
                 )}
-                <img src={this.state.arrowNext} className={arrowNext} alt="" onClick={this.nextSlide}/>
+                <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
             </div>
         );
     }
