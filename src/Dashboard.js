@@ -62,17 +62,10 @@ const Category = styled('div')`
   font-weight: 600;
 `;
 
-const Videos = styled('div')`
+const VideosContainerImg = styled('div')`
 
   img:first-child {
     margin-left: 0;
-  }
-  
-  img:last-child {
-    margin-right: 0;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 30px;
   }
   
   img {
@@ -95,6 +88,9 @@ const Footer = styled('div')`
 `;
 
 const carouselStyle = css`
+  z-index: 0;
+  
+
   .slider-control-centerleft, 
   .slider-control-centerright { 
     display: none !important;
@@ -106,6 +102,63 @@ const carouselStyle = css`
     font-size: 60px !important;
   }
 `;
+
+const arrowNext = css`
+     margin-right: 0;
+     width: 80px;
+     height: 80px;
+     margin-bottom: 30px !important;
+     cursor: pointer;
+`;
+
+const arrowNextActive = css`
+     border: 2px solid #00A5A5;
+`;
+
+class Videos extends React.Component {
+    constructor () {
+        super();
+
+        this.state = {
+            currentImageIndex: 0,
+            activeImage: false,
+            images: [
+                "https://via.placeholder.com/200x150",
+                "https://via.placeholder.com/200x150",
+                "https://via.placeholder.com/200x150",
+                "https://via.placeholder.com/200x150",
+                "https://via.placeholder.com/200x150"
+            ],
+            arrowNext: arrowRight
+        };
+
+        this.nextSlide = this.nextSlide.bind(this)
+    }
+
+    nextSlide() {
+        const lastIndex = this.state.images.length - 1;
+        const { currentImageIndex } = this.state;
+        const shouldResetIndex =  currentImageIndex === lastIndex;
+        const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+
+        this.setState({
+            currentImageIndex: index,
+            activeImage: true
+        })
+    }
+
+
+    render () {
+        return (
+            <div>
+                {this.state.images.map((image, index) =>
+                    <img src={image} alt="" className={this.state.currentImageIndex === index ? arrowNextActive : ''}/>
+                )}
+                <img src={this.state.arrowNext} className={arrowNext} alt="" onClick={this.nextSlide}/>
+            </div>
+        );
+    }
+}
 
 
 const Content = () => {
@@ -126,36 +179,21 @@ const Content = () => {
             <VideosContainer>
                 <VideosByCategory>
                     <Category>Neuerscheinungen</Category>
-                    <Videos>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src={arrowRight} alt=""/>
-                    </Videos>
+                    <VideosContainerImg>
+                        <Videos />
+                    </VideosContainerImg>
                 </VideosByCategory>
                 <VideosByCategory>
                     <Category>Empfehlungen der Redaktion</Category>
-                    <Videos>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src={arrowRight} alt=""/>
-                    </Videos>
+                    <VideosContainerImg>
+                        <Videos />
+                    </VideosContainerImg>
                 </VideosByCategory>
                 <VideosByCategory>
                     <Category>Derzeit beliebt</Category>
-                    <Videos>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src="https://via.placeholder.com/200x150"/>
-                        <img src={arrowRight} alt=""/>
-                    </Videos>
+                    <VideosContainerImg>
+                        <Videos />
+                    </VideosContainerImg>
                 </VideosByCategory>
             </VideosContainer>
         </ContentContainer>

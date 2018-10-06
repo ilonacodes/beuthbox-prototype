@@ -42,6 +42,7 @@ const NavContainer = styled('div')`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   -webkit-box-shadow: 3px 3px 4px -1px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 4px -1px rgba(0,0,0,0.75);
   box-shadow: 3px 4px 4px -1px rgba(0,0,0,0.75);
