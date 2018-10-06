@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigation} from './Navigation';
+import {Navigation, SideBar} from './Navigation';
 import styled from 'react-emotion';
 import recentVideo1 from './img/recent-video-1.jpg';
 import recentVideo2 from './img/recent-video-2.jpeg';
@@ -204,7 +204,7 @@ class Videos extends React.Component {
 }
 
 
-const Content = () => {
+const Content = (props) => {
     return (
         <ContentContainer>
             <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
@@ -243,10 +243,10 @@ const Content = () => {
     );
 };
 
-export const Dashboard = () => {
+export const Dashboard = ({onSetSidebarOpen}) => {
     return (
         <div>
-            <Navigation/>
+            <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
             <Content/>
             <Footer>
                 <img src={facebook}/>
