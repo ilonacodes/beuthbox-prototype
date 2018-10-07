@@ -10,6 +10,9 @@ import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
 import Carousel from 'nuka-carousel';
 import {css} from 'emotion';
+import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const ContentContainer = styled('div')`
   background-color: #222;
@@ -137,6 +140,69 @@ const arrowNext = css`
      } 
 `;
 
+const customStyles = {
+    content: {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        backgroundColor       : '#444'
+    }
+};
+
+const modalContainer = css`
+  display: flex;
+  flex-direction: column;
+  
+  img {
+     margin: 0 20px;
+  }
+`;
+
+const closeButton = css`
+  cursor: pointer;
+  font-size: 36px;
+  color: white;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  font-weight: bold;
+`;
+
+const modalTitle = css`
+  font-size: 28px;
+  color: #00A5A5;
+  margin: 20px;
+`;
+
+const modalText = css`
+  color: white;
+  margin: 0 20px 20px 20px;
+`;
+
+const ModalSocials = styled('div')`
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 20px;
+  color: white;
+  font-size: 25px;
+  
+  p {
+    font-size: 12px;
+  }
+`;
+
+const ModalSocial = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+`;
+
+Modal.setAppElement('#root');
+
 class Videos extends React.Component {
     constructor() {
         super();
@@ -156,11 +222,27 @@ class Videos extends React.Component {
                 'https://via.placeholder.com/200x150?text=tenth'
             ],
             arrowNext: arrowRight,
-            arrowPrev: arrowLeft
+            arrowPrev: arrowLeft,
+            modalIsOpen: false
         };
 
         this.nextSlide = this.nextSlide.bind(this);
         this.prevSlide = this.prevSlide.bind(this);
+
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({
+            modalIsOpen: true
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        })
     }
 
     prevSlide() {
@@ -193,9 +275,50 @@ class Videos extends React.Component {
 
         return (
             <div>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <div className={modalContainer}>
+                        <p className={closeButton} onClick={this.closeModal}>×</p>
+                        <img src="https://via.placeholder.com/550x300?text=Video" alt=""/>
+                        <p className={modalTitle}>Video Titel</p>
+                        <ModalSocials>
+                            <ModalSocial>
+                                <FontAwesomeIcon icon="plus" />
+                                <p>Meine Liste</p>
+                            </ModalSocial>
+
+                            <ModalSocial>
+                                <FontAwesomeIcon icon="thumbs-up" />
+                                <p>Bewerten</p>
+                            </ModalSocial>
+
+                            <ModalSocial>
+                                <FontAwesomeIcon icon="share-square" />
+                                <p>Teilen</p>
+                            </ModalSocial>
+
+                            <ModalSocial>
+                                <FontAwesomeIcon icon="arrow-down" />
+                                <p>Download</p>
+                            </ModalSocial>
+
+                            <ModalSocial>
+                                <FontAwesomeIcon icon="arrows-alt" />
+                                <p>Vollansicht</p>
+                            </ModalSocial>
+                        </ModalSocials>
+                        <p className={modalText}>Dies ist die Videobeschreibung von dem Video. Hier stehen Informationen zu dem Video,<br/>
+                            wie z.B. von wem das Video ist, wer darin zu sehen ist und weitere.
+                        </p>
+                    </div>
+                </Modal>
                 <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
                 {firstFiveVideo.map((image, index) =>
-                    <img key={index} src={image} alt=""/>
+                    <img key={index} src={image} alt="" onClick={this.openModal}/>
                 )}
                 <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
             </div>
