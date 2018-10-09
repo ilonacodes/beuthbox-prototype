@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigation, SideBar} from './Navigation';
+import {Navigation} from './Navigation';
 import styled from 'react-emotion';
 import recentVideo1 from './img/recent-video-1.jpg';
 import recentVideo2 from './img/recent-video-2.jpeg';
@@ -19,6 +19,10 @@ const ContentContainer = styled('div')`
   background-color: #222;
   margin: 60px 5px 0 5px;
   padding: 25px 25px 40px 25px;
+  
+  @media (min-width: 769px) and (max-width: 1025px) {
+    margin: 60px 5px 75px 5px
+  }
 `;
 
 const RecentVideoCarousel = styled('div')`
@@ -90,7 +94,7 @@ const VideosContainerImg = styled('div')`
   }
 `;
 
-const Footer = styled('div')`
+export const Footer = styled('div')`
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -202,7 +206,7 @@ const ModalSocial = styled('div')`
   padding-right: 20px;
 `;
 
-const playButton = css`
+export const playButton = css`
   position: absolute;
   left: 50%;
   top: 50%;

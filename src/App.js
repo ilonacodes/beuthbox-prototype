@@ -3,7 +3,8 @@ import {Dashboard} from './Dashboard';
 import Sidebar from 'react-sidebar';
 import {css} from 'emotion';
 import styled from 'react-emotion';
-import arrowRight from './img/arrow-right.svg.png';
+import {VideoDetails} from './VideoDetails';
+import {Route} from 'react-router';
 
 const sidebarOverlay = css`
   z-index: 2 !important;
@@ -166,7 +167,11 @@ class App extends Component {
                     styles={{sidebar: {background: 'dimgray'}}}
                     overlayClassName={sidebarOverlay}
                 >
-                    <Dashboard onSetSidebarOpen={this.onSetSidebarOpen}/>
+
+                    <div>
+                        <Route exact path="/" render={(props) => <Dashboard {...props} onSetSidebarOpen={this.onSetSidebarOpen}/>} />
+                        <Route exact path="/video-details/" render={(props) => <VideoDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
+                    </div>
                 </Sidebar>
             </div>
         );

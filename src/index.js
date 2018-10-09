@@ -11,19 +11,19 @@ import {
     faArrowDown,
     faArrowsAlt,
     faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-import {Route} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
-import {VideoDetails} from './VideoDetails';
+import {injectGlobal} from 'emotion';
+
+injectGlobal`
+  body { background-color: #222;}
+`;
 
 library.add({faStroopwafel, faArrowDown, faPlus, faThumbsUp, faShareSquare, faArrowsAlt, faPlayCircle});
 
 const Root = () => {
     return (
         <BrowserRouter>
-            <div>
-                <Route exact path="/" component={App} />
-                <Route exact path="/video-details" component={VideoDetails}/>
-            </div>
+            <App/>
         </BrowserRouter>
     )
 };
