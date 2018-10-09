@@ -201,6 +201,20 @@ const ModalSocial = styled('div')`
   padding-right: 20px;
 `;
 
+const playButton = css`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: #00A5A5;
+  font-size: 60px;
+  opacity: .6;
+  
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 Modal.setAppElement('#root');
 
 class Videos extends React.Component {
@@ -279,7 +293,6 @@ class Videos extends React.Component {
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
                 >
                     <div className={modalContainer}>
                         <p className={closeButton} onClick={this.closeModal}>×</p>
@@ -327,14 +340,23 @@ class Videos extends React.Component {
 }
 
 
-const Content = (props) => {
+const Content = () => {
     return (
         <ContentContainer>
             <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
                 <Carousel className={carouselStyle}>
-                    <img style={{height: '450px'}} src={recentVideo1} alt=""/>
-                    <img style={{height: '450px'}} src={recentVideo2} alt=""/>
-                    <img style={{height: '450px'}} src={recentVideo3} alt=""/>
+                    <div>
+                        <FontAwesomeIcon className={playButton} icon="play-circle" />
+                        <img style={{height: '450px'}} src={recentVideo1} alt=""/>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon className={playButton} icon="play-circle" />
+                        <img style={{height: '450px'}} src={recentVideo2} alt=""/>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon className={playButton} icon="play-circle" />
+                        <img style={{height: '450px'}} src={recentVideo3} alt=""/>
+                    </div>
                 </Carousel>
             </RecentVideoCarousel>
             <Bullets>
@@ -370,7 +392,7 @@ export const Dashboard = ({onSetSidebarOpen}) => {
     return (
         <div>
             <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
-            <Content/>
+            <Content />
             <Footer>
                 <img src={facebook}/>
                 <img src={instagram}/>
