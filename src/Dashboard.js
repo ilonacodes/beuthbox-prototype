@@ -12,6 +12,7 @@ import Carousel from 'nuka-carousel';
 import {css} from 'emotion';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Link} from 'react-router-dom';
 
 
 const ContentContainer = styled('div')`
@@ -276,7 +277,9 @@ class Videos extends React.Component {
             <div>
                 <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
                 {firstFiveVideo.map((image, index) =>
-                    <img key={index} src={image} alt=""/>
+                    <Link to={`/video-details`}>
+                        <img key={index} src={image} />
+                    </Link>
                 )}
                 <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
             </div>
@@ -356,15 +359,15 @@ class Content extends React.Component {
                     <Carousel className={carouselStyle}>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo1} alt=""/>
+                            <img style={{height: '450px'}} src={recentVideo1} />
                         </div>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo2} alt=""/>
+                            <img style={{height: '450px'}} src={recentVideo2} />
                         </div>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo3} alt=""/>
+                            <img style={{height: '450px'}} src={recentVideo3} />
                         </div>
                     </Carousel>
                 </RecentVideoCarousel>

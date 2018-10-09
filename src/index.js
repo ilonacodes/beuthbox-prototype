@@ -11,8 +11,23 @@ import {
     faArrowDown,
     faArrowsAlt,
     faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import {Route} from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
+import {VideoDetails} from './VideoDetails';
 
 library.add({faStroopwafel, faArrowDown, faPlus, faThumbsUp, faShareSquare, faArrowsAlt, faPlayCircle});
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = () => {
+    return (
+        <BrowserRouter>
+            <div>
+                <Route exact path="/" component={App} />
+                <Route exact path="/video-details" component={VideoDetails}/>
+            </div>
+        </BrowserRouter>
+    )
+};
+
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 

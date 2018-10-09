@@ -94,6 +94,7 @@ const channelStyle = css`
 `;
 
 class App extends Component {
+
     constructor() {
         super();
 
