@@ -237,27 +237,12 @@ class Videos extends React.Component {
             ],
             arrowNext: arrowRight,
             arrowPrev: arrowLeft,
-            modalIsOpen: false
         };
 
         this.nextSlide = this.nextSlide.bind(this);
         this.prevSlide = this.prevSlide.bind(this);
-
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
 
-    openModal() {
-        this.setState({
-            modalIsOpen: true
-        })
-    }
-
-    closeModal() {
-        this.setState({
-            modalIsOpen: false
-        })
-    }
 
     prevSlide() {
         const lastIndex = this.state.images.length - 1;
@@ -289,6 +274,44 @@ class Videos extends React.Component {
 
         return (
             <div>
+                <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
+                {firstFiveVideo.map((image, index) =>
+                    <img key={index} src={image} alt=""/>
+                )}
+                <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
+            </div>
+        );
+    }
+}
+
+
+class Content extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            modalIsOpen: false
+        };
+
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({
+            modalIsOpen: true
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false
+        })
+    }
+
+    render() {
+        return (
+            <ContentContainer>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
@@ -329,63 +352,51 @@ class Videos extends React.Component {
                         </p>
                     </div>
                 </Modal>
-                <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
-                {firstFiveVideo.map((image, index) =>
-                    <img key={index} src={image} alt="" onClick={this.openModal}/>
-                )}
-                <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
-            </div>
+                <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
+                    <Carousel className={carouselStyle}>
+                        <div>
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
+                            <img style={{height: '450px'}} src={recentVideo1} alt=""/>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
+                            <img style={{height: '450px'}} src={recentVideo2} alt=""/>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
+                            <img style={{height: '450px'}} src={recentVideo3} alt=""/>
+                        </div>
+                    </Carousel>
+                </RecentVideoCarousel>
+                <Bullets>
+                    <Bullet/>
+                    <Bullet/>
+                    <Bullet/>
+                </Bullets>
+                <VideosContainer>
+                    <VideosByCategory>
+                        <Category>Neuerscheinungen</Category>
+                        <VideosContainerImg>
+                            <Videos/>
+                        </VideosContainerImg>
+                    </VideosByCategory>
+                    <VideosByCategory>
+                        <Category>Empfehlungen der Redaktion</Category>
+                        <VideosContainerImg>
+                            <Videos/>
+                        </VideosContainerImg>
+                    </VideosByCategory>
+                    <VideosByCategory>
+                        <Category>Derzeit beliebt</Category>
+                        <VideosContainerImg>
+                            <Videos/>
+                        </VideosContainerImg>
+                    </VideosByCategory>
+                </VideosContainer>
+            </ContentContainer>
         );
     }
-}
 
-
-const Content = () => {
-    return (
-        <ContentContainer>
-            <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
-                <Carousel className={carouselStyle}>
-                    <div>
-                        <FontAwesomeIcon className={playButton} icon="play-circle" />
-                        <img style={{height: '450px'}} src={recentVideo1} alt=""/>
-                    </div>
-                    <div>
-                        <FontAwesomeIcon className={playButton} icon="play-circle" />
-                        <img style={{height: '450px'}} src={recentVideo2} alt=""/>
-                    </div>
-                    <div>
-                        <FontAwesomeIcon className={playButton} icon="play-circle" />
-                        <img style={{height: '450px'}} src={recentVideo3} alt=""/>
-                    </div>
-                </Carousel>
-            </RecentVideoCarousel>
-            <Bullets>
-                <Bullet/>
-                <Bullet/>
-                <Bullet/>
-            </Bullets>
-            <VideosContainer>
-                <VideosByCategory>
-                    <Category>Neuerscheinungen</Category>
-                    <VideosContainerImg>
-                        <Videos/>
-                    </VideosContainerImg>
-                </VideosByCategory>
-                <VideosByCategory>
-                    <Category>Empfehlungen der Redaktion</Category>
-                    <VideosContainerImg>
-                        <Videos/>
-                    </VideosContainerImg>
-                </VideosByCategory>
-                <VideosByCategory>
-                    <Category>Derzeit beliebt</Category>
-                    <VideosContainerImg>
-                        <Videos/>
-                    </VideosContainerImg>
-                </VideosByCategory>
-            </VideosContainer>
-        </ContentContainer>
-    );
 };
 
 export const Dashboard = ({onSetSidebarOpen}) => {
