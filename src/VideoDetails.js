@@ -114,7 +114,7 @@ const Tags = styled('div')`
   }
 `;
 
-const Notes = styled('div')`
+const Accordion = styled('div')`
    display: flex;
    justify-content: space-between;
    color: white;
@@ -142,13 +142,110 @@ const hide = css`
 
 const show = css`
   display: flex;
+`;
+
+const Downloads = styled('div')`
+   display: flex;
+   justify-content: space-between;
+   color: white;
+   margin-right: 30px;
+   
+   button {
+    color: white;
+    background-color: #00A5A5;
+    border: 0;
+    height: 22px;
+    border-radius: 5px;
+    align-self: center;
+    outline: 0;
+
+    
+    &:hover {
+      cursor: pointer;
+    }
+   }
+`;
+
+const MoreContent = styled('div')`
+  display: flex;
+  flex-direction: column;
+  margin-top: 0 !important;
   margin-right: 30px !important;
   width: 95%;
   height: 150px;
   background-color: white;
 `;
 
-class InteractiveNotes extends React.Component {
+const narrow = css`
+  height: 30px;
+  text-align: center;
+  padding-top: 3px;
+`;
+
+const FeedbackOptions = styled('div')`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ChatWrapper = styled('div')`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  width: 95%;
+`;
+
+const Chat = styled('div')`
+  display: flex;
+  flex-direction: column;
+  margin-top: 0 !important;
+  margin-right: 30px !important;
+  width: 95%;
+  height: 150px;
+  padding: 10px;
+  overflow-y: auto;
+`;
+
+const ChatMessage = styled('div')`
+  background-color: white;
+  width: 33%;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+`;
+
+const ChatMessageInput = styled('div')`
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  
+  input {
+    flex: 1;
+    padding: 3px;
+  }
+`;
+
+const chatMessageInputButton = css`
+  padding-left: 10px;
+  flex: 0;
+  color: white;
+  cursor: pointer;
+`;
+
+const leftMessage = css``;
+
+const rightMessage = css`
+  align-self: flex-end;
+`;
+
+const TimeLink = styled('span')`
+  color: blue;
+  text-decoration: underline;
+  margin-top: -3px;
+  cursor: pointer;
+`;
+
+class InteractiveAccordion extends React.Component {
     constructor() {
         super();
 
@@ -166,22 +263,135 @@ class InteractiveNotes extends React.Component {
     }
 
     render() {
+        const MoreContentComponent = this.props.moreContent || (() => <div/>);
+
         return (
             <div>
-                <Notes>
+                <Accordion>
                     {this.props.children}
                     <button onClick={this.showContent}>
                         {this.state.showedContent ? 'Ausblenden' : 'Anzeigen'}
                     </button>
-                </Notes>
-                <div className={this.state.showedContent ? show : hide}>
-                    Hello World
-                </div>
+                </Accordion>
+                <MoreContentComponent className={this.state.showedContent ? show : hide}/>
             </div>
-
         );
     }
 }
+
+const Notes = () => (
+    <ul>
+        <li>Notiz 1</li>
+        <li>Notiz 2</li>
+        <li>Notiz 3</li>
+        <li>usw.</li>
+    </ul>
+);
+
+class InteractiveChat extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            messages: this.props.initialMessages,
+            input: ''
+        };
+
+        this.onInputChange = this.onInputChange.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
+    }
+
+    onInputChange(e) {
+        this.setState({input: e.target.value});
+    }
+
+    sendMessage() {
+        this.setState({
+            messages: [
+                ...this.state.messages,
+                {right: this.state.input}
+            ],
+            input: ''
+        });
+    }
+
+    render() {
+        const {className} = this.props;
+        const {messages, input} = this.state;
+
+        return <ChatWrapper className={className}>
+            <Chat>
+                {messages.map(message => {
+                    if (message.left) {
+                        return <ChatMessage className={leftMessage}>{message.left}</ChatMessage>;
+                    } else {
+                        return <ChatMessage className={rightMessage}>{message.right}</ChatMessage>;
+                    }
+                })}
+            </Chat>
+
+            <ChatMessageInput>
+                <input type="text"
+                       placeholder="Schreibe ein Öffentliches Feedback"
+                       onChange={this.onInputChange}
+                       onKeyUp={(e) => {
+                           if (e.keyCode === 13) this.sendMessage();
+                       }}
+                       value={input}
+                />
+                <FontAwesomeIcon className={chatMessageInputButton}
+                                 icon="location-arrow"
+                                 onClick={this.sendMessage}
+                />
+            </ChatMessageInput>
+        </ChatWrapper>;
+    }
+}
+
+const ExampleChat = (messages) => ({className}) => (
+    <InteractiveChat initialMessages={messages} className={className}/>
+);
+
+const publicMessages = [
+    {left: 'Super Vortrag!'},
+    {left: 'Sehr Informativ'},
+];
+
+const privateMessages = [
+    {right: 'Sie sollten auf jeden Fall langsamer und deutlicher Sprechen'}
+];
+
+const commentMessages = [
+    {left: <span>An Stelle <TimeLink>3:20</TimeLink> bin ich nicht mitgekommen. Kann mir das einer erklären?</span>},
+    {right: <span>Meinst du xy? Falls ja, sagt der Dozent <TimeLink>5:50</TimeLink> nochmal mehr dazu. Vllt ist das verständlicher.</span>},
+    {left: 'Ja danke, dass meinte ich ;-)'},
+];
+
+const FeedbackOptionsWrapper = ({className}) => {
+    return (
+        <FeedbackOptions className={className}>
+            <InteractiveAccordion moreContent={ExampleChat(publicMessages)}>
+                <p>Öffentliches Feedback</p>
+            </InteractiveAccordion>
+
+            <InteractiveAccordion moreContent={ExampleChat(privateMessages)}>
+                <p>Privates Feedback an Dozenten schreiben</p>
+            </InteractiveAccordion>
+        </FeedbackOptions>
+    );
+};
+
+const MoreContentWrapper = (component) => ({className}) => (
+    <MoreContent className={className}>
+        {component}
+    </MoreContent>
+);
+
+const ChatNotAvailable = ({className}) => (
+    <MoreContent className={`${className} ${narrow}`}>
+        Die Chat Funktion steht nur zu Live-Streams zur Verfügung.
+    </MoreContent>
+);
 
 export const VideoDetails = ({onSetSidebarOpen}) => {
     return (
@@ -253,18 +463,39 @@ export const VideoDetails = ({onSetSidebarOpen}) => {
                         <p style={{color: '#00A5A5'}}>#beuthBox</p>
                         <p style={{color: 'red'}}>#lecture</p>
                     </Tags>
-                    <InteractiveNotes>
+
+                    <InteractiveAccordion moreContent={MoreContentWrapper(<Notes/>)}>
                         <p>Notizen</p>
-                    </InteractiveNotes>
-                    <InteractiveNotes>
+                    </InteractiveAccordion>
+
+                    <InteractiveAccordion moreContent={FeedbackOptionsWrapper}>
                         <p>Feedback an Dozenten</p>
-                    </InteractiveNotes>
-                    <InteractiveNotes>
+                    </InteractiveAccordion>
+
+                    <InteractiveAccordion moreContent={ExampleChat(commentMessages)}>
                         <p>Kommentare</p>
-                    </InteractiveNotes>
-                    <InteractiveNotes>
+                    </InteractiveAccordion>
+
+                    <InteractiveAccordion moreContent={ChatNotAvailable}>
                         <p>Chat</p>
-                    </InteractiveNotes>
+                    </InteractiveAccordion>
+
+                    <VideoTitle>Unterrichtsmaterial</VideoTitle>
+
+                    <Downloads>
+                        <p>Folien zur Vorlesung am 01.02.2018</p>
+                        <button>Herunterladen</button>
+                    </Downloads>
+
+                    <Downloads>
+                        <p>Handout zum Thema XYZ</p>
+                        <button>Herunterladen</button>
+                    </Downloads>
+
+                    <Downloads>
+                        <p>Folien zur Vorlesung am 02.01.2018</p>
+                        <button>Herunterladen</button>
+                    </Downloads>
 
                 </RightSideDetails>
             </VideoDetailsContainer>
