@@ -61,7 +61,7 @@ const playVideoButton = css`
   }
 `;
 
-const VideoTitle = styled('div')`
+export const VideoTitle = styled('div')`
   font-size: 28px;
   color: #00A5A5;
   margin: 20px 0;
@@ -469,11 +469,11 @@ export const VideoDetails = ({onSetSidebarOpen}) => {
                     </InteractiveAccordion>
 
                     <InteractiveAccordion moreContent={FeedbackOptionsWrapper}>
-                        <p>Feedback an Dozenten</p>
+                        <p style={{color: 'red'}}>Feedback an Dozenten</p>
                     </InteractiveAccordion>
 
                     <InteractiveAccordion moreContent={ExampleChat(commentMessages)}>
-                        <p>Kommentare</p>
+                        <p style={{color: '#00A5A5'}}>Kommentare</p>
                     </InteractiveAccordion>
 
                     <InteractiveAccordion moreContent={ChatNotAvailable}>

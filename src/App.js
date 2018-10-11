@@ -5,9 +5,15 @@ import {css} from 'emotion';
 import styled from 'react-emotion';
 import {VideoDetails} from './VideoDetails';
 import {Route} from 'react-router';
+import {Channel, link} from './Channel';
+import {Link} from 'react-router-dom';
 
 const sidebarOverlay = css`
   z-index: 2 !important;
+`;
+
+const sidebarContainer = css`
+  z-index: 3 !important;
 `;
 
 const SidebarContainer = styled('div')`
@@ -114,6 +120,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Sidebar
+                    className={sidebarContainer}
                     sidebar={
                         <SidebarContainer>
                             <UserInfo>
@@ -143,10 +150,13 @@ class App extends Component {
                                     <p>Campus-Event</p>
                                     <p>Forschung</p>
                                     <p>Studenten-Projekte</p>
-                                    <Asset className={channelStyle}>
-                                        <p>Channel</p>
-                                        <span>{`>`}</span>
-                                    </Asset>
+                                    <Link to="/channels" className={link}>
+                                        <Asset className={channelStyle}>
+                                            <p>Channel</p>
+                                            <span>{`>`}</span>
+                                        </Asset>
+                                    </Link>
+
                                 </FilterList>
                             </Assets>
                             <Line />
@@ -164,13 +174,14 @@ class App extends Component {
                     }
                     open={this.state.sidebarOpen}
                     onSetOpen={this.onSetSidebarOpen}
-                    styles={{sidebar: {background: 'dimgray'}}}
+                    styles={{sidebar: {background: 'dimgray', zIndex: 3}}}
                     overlayClassName={sidebarOverlay}
                 >
 
                     <div>
                         <Route exact path="/" render={(props) => <Dashboard {...props} onSetSidebarOpen={this.onSetSidebarOpen}/>} />
                         <Route exact path="/video-details/" render={(props) => <VideoDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
+                        <Route exact path="/channels/" render={(props) => <Channel {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                     </div>
                 </Sidebar>
             </div>
