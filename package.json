@@ -1,6 +1,7 @@
 {
   "name": "beuthbox-prototype",
   "version": "0.1.0",
+  "homepage": "http://www.ilonacodes.com/beuthbox-prototype",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
