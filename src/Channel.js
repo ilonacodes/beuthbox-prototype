@@ -92,6 +92,7 @@ export const Channel = ({onSetSidebarOpen}) => {
            <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
             <Channels headline="Channels" />
             <Channels headline="" />
+            <Channels headline="" />
             <Footer>
                 <img src={facebook}/>
                 <img src={instagram}/>

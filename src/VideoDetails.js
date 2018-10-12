@@ -28,12 +28,19 @@ const LeftSideDetails = styled('div')`
 `;
 
 const videoCaption = css`
-  flex: 1;
   height: 120px;
   background-color: white;
   color: #000;
   padding: 0 10px;
   font-weight: bold;
+`;
+
+const videoSize = css`
+  height: 450px;
+  
+  @media (min-width: 767px) and (max-width: 1025px) {
+    height: 400px;
+  }
 `;
 
 const RightSideDetails = styled('div')`
@@ -75,7 +82,7 @@ const nextVideos = css`
   height: 500px;
   
   @media (min-width: 769px) and (max-width: 1025px) {
-     height: 500px;
+     height: 550px;
   }
 `;
 
@@ -230,6 +237,14 @@ const chatMessageInputButton = css`
   flex: 0;
   color: white;
   cursor: pointer;
+`;
+
+const responsiveChat = css`
+
+  @media (min-width: 767px) and (max-width: 1025px) {
+    font-size: 11px;
+   }
+   
 `;
 
 const leftMessage = css``;
@@ -388,7 +403,7 @@ const MoreContentWrapper = (component) => ({className}) => (
 );
 
 const ChatNotAvailable = ({className}) => (
-    <MoreContent className={`${className} ${narrow}`}>
+    <MoreContent className={`${className} ${narrow} ${responsiveChat}`}>
         Die Chat Funktion steht nur zu Live-Streams zur Verfügung.
     </MoreContent>
 );
@@ -401,7 +416,7 @@ export const VideoDetails = ({onSetSidebarOpen}) => {
                 <LeftSideDetails>
                     <VideoPlayContainer>
                         <FontAwesomeIcon className={playVideoButton} icon="play-circle"/>
-                        <img style={{height: '450px'}} src={recentVideo1}/>
+                        <img className={videoSize} src={recentVideo1}/>
                     </VideoPlayContainer>
                     <VideoTitle>beuthBOX Video Titel</VideoTitle>
                     <div className={videoCaption}>
