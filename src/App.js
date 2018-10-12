@@ -7,6 +7,7 @@ import {VideoDetails} from './VideoDetails';
 import {Route} from 'react-router';
 import {Channel, link} from './Channel';
 import {Link} from 'react-router-dom';
+import {ChannelDetails} from './ChannelDetails';
 
 const sidebarOverlay = css`
   z-index: 2 !important;
@@ -182,6 +183,7 @@ class App extends Component {
                         <Route exact path="/" render={(props) => <Dashboard {...props} onSetSidebarOpen={this.onSetSidebarOpen}/>} />
                         <Route exact path="/video-details/" render={(props) => <VideoDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/channels/" render={(props) => <Channel {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
+                        <Route exact path="/channel-details/" render={(props) => <ChannelDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                     </div>
                 </Sidebar>
             </div>
