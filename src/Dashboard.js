@@ -52,12 +52,12 @@ const Bullets = styled('div')`
   text-align: center;
 `;
 
-const VideosContainer = styled('div')`
+export const VideosContainer = styled('div')`
   display: flex;
   flex-direction: column;
 `;
 
-const VideosByCategory = styled('div')`
+export const VideosByCategory = styled('div')`
   display: flex;
   flex-direction: column;
   margin-top: 60px;
@@ -71,7 +71,7 @@ const Category = styled('div')`
   font-weight: 600;
 `;
 
-const VideosContainerImg = styled('div')`
+export const VideosContainerImg = styled('div')`
 
   img:first-child {
     margin-left: 0;
@@ -222,24 +222,13 @@ export const playButton = css`
 
 Modal.setAppElement('#root');
 
-class Videos extends React.Component {
-    constructor() {
-        super();
+export class Videos extends React.Component {
+    constructor(props) {
+        super(props);
 
         this.state = {
             currentImageIndex: 0,
-            images: [
-                'https://via.placeholder.com/200x150?text=first',
-                'https://via.placeholder.com/200x150?text=second',
-                'https://via.placeholder.com/200x150?text=third',
-                'https://via.placeholder.com/200x150?text=fourth',
-                'https://via.placeholder.com/200x150?text=fifth',
-                'https://via.placeholder.com/200x150?text=sixth',
-                'https://via.placeholder.com/200x150?text=seventh',
-                'https://via.placeholder.com/200x150?text=eighth',
-                'https://via.placeholder.com/200x150?text=ninth',
-                'https://via.placeholder.com/200x150?text=tenth'
-            ],
+            images: this.props.images,
             arrowNext: arrowRight,
             arrowPrev: arrowLeft,
         };
@@ -384,19 +373,52 @@ class Content extends React.Component {
                     <VideosByCategory>
                         <Category>Neuerscheinungen</Category>
                         <VideosContainerImg>
-                            <Videos/>
+                            <Videos images={[
+                                'https://via.placeholder.com/200x150?text=first',
+                                'https://via.placeholder.com/200x150?text=second',
+                                'https://via.placeholder.com/200x150?text=third',
+                                'https://via.placeholder.com/200x150?text=fourth',
+                                'https://via.placeholder.com/200x150?text=fifth',
+                                'https://via.placeholder.com/200x150?text=sixth',
+                                'https://via.placeholder.com/200x150?text=seventh',
+                                'https://via.placeholder.com/200x150?text=eighth',
+                                'https://via.placeholder.com/200x150?text=ninth',
+                                'https://via.placeholder.com/200x150?text=tenth'
+                            ]}/>
                         </VideosContainerImg>
                     </VideosByCategory>
                     <VideosByCategory>
                         <Category>Empfehlungen der Redaktion</Category>
                         <VideosContainerImg>
-                            <Videos/>
+                            <Videos images={[
+                                'https://via.placeholder.com/200x150?text=first',
+                                'https://via.placeholder.com/200x150?text=second',
+                                'https://via.placeholder.com/200x150?text=third',
+                                'https://via.placeholder.com/200x150?text=fourth',
+                                'https://via.placeholder.com/200x150?text=fifth',
+                                'https://via.placeholder.com/200x150?text=sixth',
+                                'https://via.placeholder.com/200x150?text=seventh',
+                                'https://via.placeholder.com/200x150?text=eighth',
+                                'https://via.placeholder.com/200x150?text=ninth',
+                                'https://via.placeholder.com/200x150?text=tenth'
+                            ]}/>
                         </VideosContainerImg>
                     </VideosByCategory>
                     <VideosByCategory>
                         <Category>Derzeit beliebt</Category>
                         <VideosContainerImg>
-                            <Videos/>
+                            <Videos images={[
+                                'https://via.placeholder.com/200x150?text=first',
+                                'https://via.placeholder.com/200x150?text=second',
+                                'https://via.placeholder.com/200x150?text=third',
+                                'https://via.placeholder.com/200x150?text=fourth',
+                                'https://via.placeholder.com/200x150?text=fifth',
+                                'https://via.placeholder.com/200x150?text=sixth',
+                                'https://via.placeholder.com/200x150?text=seventh',
+                                'https://via.placeholder.com/200x150?text=eighth',
+                                'https://via.placeholder.com/200x150?text=ninth',
+                                'https://via.placeholder.com/200x150?text=tenth'
+                            ]}/>
                         </VideosContainerImg>
                     </VideosByCategory>
                 </VideosContainer>

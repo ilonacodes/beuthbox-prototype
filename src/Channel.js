@@ -9,7 +9,7 @@ import {Footer} from './Dashboard';
 import facebook from './img/facebook.png';
 import instagram from './img/instagram.png'
 
-const channels = css`
+export const channels = css`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -42,6 +42,9 @@ const channels = css`
 
 export const link = css`
   text-decoration: none;
+  &:visited, &:hover, &:active {
+  color: inherit;
+}
 `;
 
 const channelWrapper = css`
@@ -49,7 +52,7 @@ const channelWrapper = css`
   justify-content: space-around;
 `;
 
-const title = css`
+export const title = css`
   font-size: 28px;
   color: #00A5A5 !important;
   margin: 20px 40px 40px 40px;

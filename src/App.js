@@ -145,7 +145,9 @@ class App extends Component {
 
                             <Assets>
                                 <FilterList>
-                                    <p>Startseite</p>
+                                    <Link to="/" className={link}>
+                                        <p>Startseite</p>
+                                    </Link>
                                     <p className='active'>Kategorien</p>
                                     <p>Image-Filme</p>
                                     <p>Campus-Event</p>
