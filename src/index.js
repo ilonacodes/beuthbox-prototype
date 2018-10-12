@@ -31,9 +31,13 @@ library.add({
     faLocationArrow
 });
 
+const basePath = process.env.NODE_ENV === 'production' ?
+    '/beuthbox-prototype/' :
+    '/';
+
 const Root = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={basePath}>
             <App/>
         </BrowserRouter>
     );
