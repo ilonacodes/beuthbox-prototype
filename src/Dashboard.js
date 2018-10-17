@@ -38,6 +38,15 @@ const RecentVideoCarousel = styled('div')`
   }
 `;
 
+const newVideo = css`
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+`;
+
 const Bullet = styled('div')`
   background-color: #00A5A5;
   height: 20px;
@@ -363,14 +372,17 @@ class Content extends React.Component {
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
                             <img style={{height: '450px'}} src={recentVideo1}/>
+                            <h2 className={newVideo}>Titel 1: Aktuelles Video</h2>
                         </div>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
                             <img style={{height: '450px'}} src={recentVideo2}/>
+                            <h2 className={newVideo}>Titel 2: Aktuelles Video</h2>
                         </div>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
                             <img style={{height: '450px'}} src={recentVideo3}/>
+                            <h2 className={newVideo}>Titel 3: Aktuelles Video</h2>
                         </div>
                     </Carousel>
                 </RecentVideoCarousel>
