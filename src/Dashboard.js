@@ -11,7 +11,7 @@ import instagram from './img/instagram.png';
 import Carousel from 'nuka-carousel';
 import {css} from 'emotion';
 import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Link} from 'react-router-dom';
 
 
@@ -73,8 +73,20 @@ const Category = styled('div')`
 
 export const VideosContainerImg = styled('div')`
 
+  width: 100%;
+  display: flex;
+  
+  & > a {
+    flex: 1;
+  }
+
   img:first-child {
-    margin-left: 0;
+    margin-left: 10px;
+    align-self: center;
+  }
+  
+  img:last-child {
+    align-self: center;
   }
   
   img {
@@ -128,32 +140,29 @@ const arrowNext = css`
      margin-right: 0;
      width: 30px;
      height: 30px;
-     margin-bottom: 60px !important;
      cursor: pointer;
      
      @media (min-width: 768px) and (max-width: 1025px) {
         width: 40px !important;
         height: 40px !important;
-        margin-bottom: 40px !important;
 
      } 
      
      @media (max-width: 769px) {
         width: 14px !important;
         height: 14px !important;
-        margin-bottom: 30px !important;
      } 
 `;
 
 const customStyles = {
     content: {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        backgroundColor       : '#444'
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: '#444'
     }
 };
 
@@ -245,7 +254,7 @@ export class Videos extends React.Component {
 
         this.setState({
             currentImageIndex: index
-        })
+        });
     }
 
     nextSlide() {
@@ -263,19 +272,19 @@ export class Videos extends React.Component {
         const index = this.state.currentImageIndex;
         let firstFiveVideo = this.state.images.slice(index, index + 5);
         if (firstFiveVideo.length < 5) {
-            firstFiveVideo = firstFiveVideo.concat(this.state.images.slice(0, 5 - firstFiveVideo.length))
+            firstFiveVideo = firstFiveVideo.concat(this.state.images.slice(0, 5 - firstFiveVideo.length));
         }
 
         return (
-            <div>
+            <VideosContainerImg>
                 <img src={this.state.arrowPrev} className={arrowNext} onClick={this.prevSlide}/>
                 {firstFiveVideo.map((image, index) =>
                     <Link to={`/video-details`}>
-                        <img key={index} src={image} />
+                        <img key={index} src={image}/>
                     </Link>
                 )}
                 <img src={this.state.arrowNext} className={arrowNext} onClick={this.nextSlide}/>
-            </div>
+            </VideosContainerImg>
         );
     }
 }
@@ -296,13 +305,13 @@ class Content extends React.Component {
     openModal() {
         this.setState({
             modalIsOpen: true
-        })
+        });
     }
 
     closeModal() {
         this.setState({
             modalIsOpen: false
-        })
+        });
     }
 
     render() {
@@ -319,31 +328,32 @@ class Content extends React.Component {
                         <p className={modalTitle}>Video Titel</p>
                         <ModalSocials>
                             <ModalSocial>
-                                <FontAwesomeIcon icon="plus" />
+                                <FontAwesomeIcon icon="plus"/>
                                 <p>Meine Liste</p>
                             </ModalSocial>
 
                             <ModalSocial>
-                                <FontAwesomeIcon icon="thumbs-up" />
+                                <FontAwesomeIcon icon="thumbs-up"/>
                                 <p>Bewerten</p>
                             </ModalSocial>
 
                             <ModalSocial>
-                                <FontAwesomeIcon icon="share-square" />
+                                <FontAwesomeIcon icon="share-square"/>
                                 <p>Teilen</p>
                             </ModalSocial>
 
                             <ModalSocial>
-                                <FontAwesomeIcon icon="arrow-down" />
+                                <FontAwesomeIcon icon="arrow-down"/>
                                 <p>Download</p>
                             </ModalSocial>
 
                             <ModalSocial>
-                                <FontAwesomeIcon icon="arrows-alt" />
+                                <FontAwesomeIcon icon="arrows-alt"/>
                                 <p>Vollansicht</p>
                             </ModalSocial>
                         </ModalSocials>
-                        <p className={modalText}>Dies ist die Videobeschreibung von dem Video. Hier stehen Informationen zu dem Video,<br/>
+                        <p className={modalText}>Dies ist die Videobeschreibung von dem Video. Hier stehen Informationen
+                            zu dem Video,<br/>
                             wie z.B. von wem das Video ist, wer darin zu sehen ist und weitere.
                         </p>
                     </div>
@@ -351,16 +361,16 @@ class Content extends React.Component {
                 <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
                     <Carousel className={carouselStyle}>
                         <div>
-                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo1} />
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
+                            <img style={{height: '450px'}} src={recentVideo1}/>
                         </div>
                         <div>
-                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo2} />
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
+                            <img style={{height: '450px'}} src={recentVideo2}/>
                         </div>
                         <div>
-                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle" />
-                            <img style={{height: '450px'}} src={recentVideo3} />
+                            <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
+                            <img style={{height: '450px'}} src={recentVideo3}/>
                         </div>
                     </Carousel>
                 </RecentVideoCarousel>
@@ -372,54 +382,48 @@ class Content extends React.Component {
                 <VideosContainer>
                     <VideosByCategory>
                         <Category>Neuerscheinungen</Category>
-                        <VideosContainerImg>
-                            <Videos images={[
-                                'https://via.placeholder.com/200x150?text=first',
-                                'https://via.placeholder.com/200x150?text=second',
-                                'https://via.placeholder.com/200x150?text=third',
-                                'https://via.placeholder.com/200x150?text=fourth',
-                                'https://via.placeholder.com/200x150?text=fifth',
-                                'https://via.placeholder.com/200x150?text=sixth',
-                                'https://via.placeholder.com/200x150?text=seventh',
-                                'https://via.placeholder.com/200x150?text=eighth',
-                                'https://via.placeholder.com/200x150?text=ninth',
-                                'https://via.placeholder.com/200x150?text=tenth'
-                            ]}/>
-                        </VideosContainerImg>
+                        <Videos images={[
+                            'https://via.placeholder.com/200x150?text=first',
+                            'https://via.placeholder.com/200x150?text=second',
+                            'https://via.placeholder.com/200x150?text=third',
+                            'https://via.placeholder.com/200x150?text=fourth',
+                            'https://via.placeholder.com/200x150?text=fifth',
+                            'https://via.placeholder.com/200x150?text=sixth',
+                            'https://via.placeholder.com/200x150?text=seventh',
+                            'https://via.placeholder.com/200x150?text=eighth',
+                            'https://via.placeholder.com/200x150?text=ninth',
+                            'https://via.placeholder.com/200x150?text=tenth'
+                        ]}/>
                     </VideosByCategory>
                     <VideosByCategory>
                         <Category>Empfehlungen der Redaktion</Category>
-                        <VideosContainerImg>
-                            <Videos images={[
-                                'https://via.placeholder.com/200x150?text=first',
-                                'https://via.placeholder.com/200x150?text=second',
-                                'https://via.placeholder.com/200x150?text=third',
-                                'https://via.placeholder.com/200x150?text=fourth',
-                                'https://via.placeholder.com/200x150?text=fifth',
-                                'https://via.placeholder.com/200x150?text=sixth',
-                                'https://via.placeholder.com/200x150?text=seventh',
-                                'https://via.placeholder.com/200x150?text=eighth',
-                                'https://via.placeholder.com/200x150?text=ninth',
-                                'https://via.placeholder.com/200x150?text=tenth'
-                            ]}/>
-                        </VideosContainerImg>
+                        <Videos images={[
+                            'https://via.placeholder.com/200x150?text=first',
+                            'https://via.placeholder.com/200x150?text=second',
+                            'https://via.placeholder.com/200x150?text=third',
+                            'https://via.placeholder.com/200x150?text=fourth',
+                            'https://via.placeholder.com/200x150?text=fifth',
+                            'https://via.placeholder.com/200x150?text=sixth',
+                            'https://via.placeholder.com/200x150?text=seventh',
+                            'https://via.placeholder.com/200x150?text=eighth',
+                            'https://via.placeholder.com/200x150?text=ninth',
+                            'https://via.placeholder.com/200x150?text=tenth'
+                        ]}/>
                     </VideosByCategory>
                     <VideosByCategory>
                         <Category>Derzeit beliebt</Category>
-                        <VideosContainerImg>
-                            <Videos images={[
-                                'https://via.placeholder.com/200x150?text=first',
-                                'https://via.placeholder.com/200x150?text=second',
-                                'https://via.placeholder.com/200x150?text=third',
-                                'https://via.placeholder.com/200x150?text=fourth',
-                                'https://via.placeholder.com/200x150?text=fifth',
-                                'https://via.placeholder.com/200x150?text=sixth',
-                                'https://via.placeholder.com/200x150?text=seventh',
-                                'https://via.placeholder.com/200x150?text=eighth',
-                                'https://via.placeholder.com/200x150?text=ninth',
-                                'https://via.placeholder.com/200x150?text=tenth'
-                            ]}/>
-                        </VideosContainerImg>
+                        <Videos images={[
+                            'https://via.placeholder.com/200x150?text=first',
+                            'https://via.placeholder.com/200x150?text=second',
+                            'https://via.placeholder.com/200x150?text=third',
+                            'https://via.placeholder.com/200x150?text=fourth',
+                            'https://via.placeholder.com/200x150?text=fifth',
+                            'https://via.placeholder.com/200x150?text=sixth',
+                            'https://via.placeholder.com/200x150?text=seventh',
+                            'https://via.placeholder.com/200x150?text=eighth',
+                            'https://via.placeholder.com/200x150?text=ninth',
+                            'https://via.placeholder.com/200x150?text=tenth'
+                        ]}/>
                     </VideosByCategory>
                 </VideosContainer>
             </ContentContainer>
@@ -432,7 +436,7 @@ export const Dashboard = ({onSetSidebarOpen}) => {
     return (
         <div>
             <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
-            <Content />
+            <Content/>
             <Footer>
                 <img src={facebook}/>
                 <img src={instagram}/>
