@@ -368,7 +368,7 @@ class Content extends React.Component {
                     </div>
                 </Modal>
                 <RecentVideoCarousel style={{width: '100%', margin: 'auto'}}>
-                    <Carousel className={carouselStyle}>
+                    <Carousel className={carouselStyle} autoplay={true} autoplayInterval={2000} wrapAround={true}>
                         <div>
                             <FontAwesomeIcon className={playButton} onClick={this.openModal} icon="play-circle"/>
                             <img style={{height: '450px'}} src={recentVideo1}/>
