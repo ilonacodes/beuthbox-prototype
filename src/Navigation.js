@@ -7,6 +7,7 @@ const hamburgerMenu = css`
   font-size: 28px;
   padding: 10px 20px;
   flex: 1;
+  cursor: pointer;
 `;
 
 const searchInput = css`

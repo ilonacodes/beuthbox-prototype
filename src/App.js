@@ -85,6 +85,7 @@ const FilterList = styled('div')`
   
   .active {
     color: lightseagreen;
+    margin-top: 30px !important;
   }
 `;
 
@@ -126,7 +127,7 @@ class App extends Component {
                         <SidebarContainer>
                             <UserInfo>
                                 <img src="https://via.placeholder.com/50x50?text=user" alt=""/>
-                                <p>S854567</p>
+                                <p>Karl Otto</p>
                             </UserInfo>
                             <Line />
                             <Assets>
@@ -148,11 +149,7 @@ class App extends Component {
                                     <Link to="/" className={link}>
                                         <p>Startseite</p>
                                     </Link>
-                                    <p className='active'>Kategorien</p>
-                                    <p>Image-Filme</p>
-                                    <p>Campus-Event</p>
-                                    <p>Forschung</p>
-                                    <p>Studenten-Projekte</p>
+
                                     <Link to="/channels" className={link}>
                                         <Asset className={channelStyle}>
                                             <p>Channel</p>
@@ -160,6 +157,18 @@ class App extends Component {
                                         </Asset>
                                     </Link>
 
+                                    <Link to="/channels" className={link}>
+                                        <Asset className={channelStyle}>
+                                            <p>Live-Streams</p>
+                                            <span>{`>`}</span>
+                                        </Asset>
+                                    </Link>
+
+                                    <p className='active'>Kategorien:</p>
+                                    <p>Image-Filme</p>
+                                    <p>Campus-Event</p>
+                                    <p>Forschung</p>
+                                    <p>Studenten-Projekte</p>
                                 </FilterList>
                             </Assets>
                             <Line />
