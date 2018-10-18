@@ -50,7 +50,7 @@ const Line = styled('div')`
   width: 100%;
   background-color: black;
   height: 2px;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
 `;
 
 const Assets = styled('div')`
@@ -161,6 +161,20 @@ const AssetsUser = ({isLoggedIn}) => {
     }
 };
 
+const UserSettings = ({isLoggedIn, logout}) => {
+    if (isLoggedIn) {
+        return (
+            <div>
+                <p>Einstellungen</p>
+                <p>Konto</p>
+                <a onClick={logout}>Ausloggen</a>
+            </div>
+        )
+    } else {
+        return <div></div>;
+    }
+};
+
 class AppComponent extends Component {
 
     constructor(props) {
@@ -179,10 +193,17 @@ class AppComponent extends Component {
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
         this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     onSetSidebarOpen(open) {
         this.setState({sidebarOpen: open});
+    }
+
+    logout() {
+        this.setState({
+            isLoggedIn: false
+        })
     }
 
     login() {
@@ -205,39 +226,45 @@ class AppComponent extends Component {
 
                             <Assets>
                                 <FilterList>
-                                    <Link to="/" className={link}>
-                                        <p>Startseite</p>
-                                    </Link>
+                                    <div>
+                                        <Link to="/" className={link}>
+                                            <p>Startseite</p>
+                                        </Link>
 
-                                    <Link to="/channels" className={link}>
-                                        <Asset className={channelStyle}>
-                                            <p>Channel</p>
-                                            <span>{`>`}</span>
-                                        </Asset>
-                                    </Link>
+                                        <Link to="/channels" className={link}>
+                                            <Asset className={channelStyle}>
+                                                <p>Channel</p>
+                                                <span>{`>`}</span>
+                                            </Asset>
+                                        </Link>
 
-                                    <Link to="/channels" className={link}>
-                                        <Asset className={channelStyle}>
-                                            <p>Live-Streams</p>
-                                            <span>{`>`}</span>
-                                        </Asset>
-                                    </Link>
+                                        <Link to="/channels" className={link}>
+                                            <Asset className={channelStyle}>
+                                                <p>Live-Streams</p>
+                                                <span>{`>`}</span>
+                                            </Asset>
+                                        </Link>
+                                    </div>
 
-                                    <p className='active'>Kategorien:</p>
-                                    <p>Image-Filme</p>
-                                    <p>Campus-Event</p>
-                                    <p>Forschung</p>
-                                    <p>Studenten-Projekte</p>
+                                    <div>
+                                        <p className='active'>Kategorien:</p>
+                                        <p>Image-Filme</p>
+                                        <p>Campus-Event</p>
+                                        <p>Forschung</p>
+                                        <p>Studenten-Projekte</p>
+                                    </div>
+
                                 </FilterList>
                             </Assets>
                             <Line />
 
                             <Assets>
                                 <FilterList>
-                                    <p>Einstellungen</p>
-                                    <p>Konto</p>
-                                    <p>Datenschutz</p>
-                                    <p>Hilfe</p>
+                                    <div>
+                                        <UserSettings isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+                                        <p>Datenschutz</p>
+                                        <p>Hilfe</p>
+                                    </div>
                                 </FilterList>
                             </Assets>
                         </SidebarContainer>
