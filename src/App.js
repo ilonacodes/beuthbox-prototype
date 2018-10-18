@@ -4,10 +4,15 @@ import Sidebar from 'react-sidebar';
 import {css} from 'emotion';
 import styled from 'react-emotion';
 import {VideoDetails} from './VideoDetails';
-import {Route} from 'react-router';
+import {Route, withRouter} from 'react-router';
 import {Channel, link} from './Channel';
 import {Link} from 'react-router-dom';
 import {ChannelDetails} from './ChannelDetails';
+import {LoginForm} from './LoginForm';
+
+const AppContent = styled('div')`
+  padding-bottom: 80px;
+`;
 
 const sidebarOverlay = css`
   z-index: 2 !important;
@@ -24,7 +29,7 @@ const SidebarContainer = styled('div')`
   margin: 10px 0px;
 `;
 
-const UserInfo = styled('div')`
+const UserInfoContainer = styled('div')`
   display: flex;
   justify-content: start;
   
@@ -102,47 +107,101 @@ const channelStyle = css`
   }
 `;
 
-class App extends Component {
+const LoginLinkContainer = styled('div')`
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  a {
+    text-decoration: none;
+  }
+  
+  a:visited, a:focus {
+    outline: none;
+    color: white;
+  }
+`
 
-    constructor() {
-        super();
+const UserInfo = ({isLoggedIn}) => {
+    if (isLoggedIn) {
+        return (
+            <UserInfoContainer>
+                <img src="https://via.placeholder.com/50x50?text=user" />
+                <p>KarlOtto</p>
+            </UserInfoContainer>
+        );
+    } else {
+        return (
+            <LoginLinkContainer>
+                <Link to="/login"><p>Einloggen</p></Link>
+            </LoginLinkContainer>
+        );
+    }
+
+};
+
+const AssetsUser = ({isLoggedIn}) => {
+    if (isLoggedIn) {
+        return (
+            <Assets>
+                <Asset>
+                    <p>Meine Downloads</p>
+                    <span>{`>`}</span>
+                </Asset>
+
+                <Asset>
+                    <p>Meine Liste</p>
+                    <span>{`>`}</span>
+                </Asset>
+                <Line />
+            </Assets>
+        )
+    } else {
+        return <div></div>
+    }
+};
+
+class AppComponent extends Component {
+
+    constructor(props) {
+        super(props);
 
         this.state = {
-            sidebarOpen: false
+            sidebarOpen: false,
+            isLoggedIn: false
         };
 
+        this.props.history.listen(() => {
+            this.setState({
+                sidebarOpen: false
+            })
+        });
+
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+        this.login = this.login.bind(this);
     }
 
     onSetSidebarOpen(open) {
         this.setState({sidebarOpen: open});
     }
 
+    login() {
+        this.setState({
+            isLoggedIn: true
+        });
+        this.props.history.push('/')
+    }
+
     render() {
         return (
-            <div className="App">
+            <div>
                 <Sidebar
                     className={sidebarContainer}
                     sidebar={
                         <SidebarContainer>
-                            <UserInfo>
-                                <img src="https://via.placeholder.com/50x50?text=user" alt=""/>
-                                <p>Karl Otto</p>
-                            </UserInfo>
+                            <UserInfo isLoggedIn={this.state.isLoggedIn} />
                             <Line />
-                            <Assets>
-                                <Asset>
-                                    <p>Meine Downloads</p>
-                                    <span>{`>`}</span>
-                                </Asset>
-
-                                <Asset>
-                                    <p>Meine Liste</p>
-                                    <span>{`>`}</span>
-                                </Asset>
-                            </Assets>
-
-                            <Line />
+                            <AssetsUser isLoggedIn={this.state.isLoggedIn} />
 
                             <Assets>
                                 <FilterList>
@@ -179,7 +238,6 @@ class App extends Component {
                                     <p>Konto</p>
                                     <p>Datenschutz</p>
                                     <p>Hilfe</p>
-                                    <p>Ausloggen</p>
                                 </FilterList>
                             </Assets>
                         </SidebarContainer>
@@ -190,16 +248,19 @@ class App extends Component {
                     overlayClassName={sidebarOverlay}
                 >
 
-                    <div>
+                    <AppContent>
                         <Route exact path="/" render={(props) => <Dashboard {...props} onSetSidebarOpen={this.onSetSidebarOpen}/>} />
                         <Route exact path="/video-details/" render={(props) => <VideoDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/channels/" render={(props) => <Channel {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/channel-details/" render={(props) => <ChannelDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
-                    </div>
+                        <Route exact path="/login/" render={(props) => <LoginForm {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                    </AppContent>
                 </Sidebar>
             </div>
         );
     }
 }
+
+const App = withRouter(AppComponent);
 
 export default App;

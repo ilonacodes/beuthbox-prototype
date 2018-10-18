@@ -38,6 +38,7 @@ const basePath = process.env.NODE_ENV === 'production' ?
 const Root = () => {
     return (
         <BrowserRouter basename={basePath}>
+
             <App/>
         </BrowserRouter>
     );

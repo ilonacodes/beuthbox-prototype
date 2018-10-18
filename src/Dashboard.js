@@ -117,6 +117,8 @@ export const VideosContainerImg = styled('div')`
 
 export const Footer = styled('div')`
   width: 100%;
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: flex-end;
   background-color: #00A5A5;
