@@ -9,6 +9,7 @@ import {Channel, link} from './Channel';
 import {Link} from 'react-router-dom';
 import {ChannelDetails} from './ChannelDetails';
 import {LoginForm} from './LoginForm';
+import {MyList} from './MyList';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -150,7 +151,7 @@ const AssetsUser = ({isLoggedIn}) => {
                 </Asset>
 
                 <Asset>
-                    <p>Meine Liste</p>
+                    <Link to="/my-video-list/" className={link}><p>Meine Liste</p></Link>
                     <span>{`>`}</span>
                 </Asset>
                 <Line />
@@ -281,6 +282,7 @@ class AppComponent extends Component {
                         <Route exact path="/channels/" render={(props) => <Channel {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/channel-details/" render={(props) => <ChannelDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/login/" render={(props) => <LoginForm {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/my-video-list/" render={(props) => <MyList {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>
