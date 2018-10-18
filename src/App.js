@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 import {ChannelDetails} from './ChannelDetails';
 import {LoginForm} from './LoginForm';
 import {MyList} from './MyList';
+import {MyDownloads} from './MyDownloads';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -146,7 +147,7 @@ const AssetsUser = ({isLoggedIn}) => {
         return (
             <Assets>
                 <Asset>
-                    <p>Meine Downloads</p>
+                    <Link to="/my-downloads/" className={link}><p>Meine Downloads</p></Link>
                     <span>{`>`}</span>
                 </Asset>
 
@@ -283,6 +284,7 @@ class AppComponent extends Component {
                         <Route exact path="/channel-details/" render={(props) => <ChannelDetails {...props} onSetSidebarOpen={this.onSetSidebarOpen} />}/>
                         <Route exact path="/login/" render={(props) => <LoginForm {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/my-video-list/" render={(props) => <MyList {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/my-downloads/" render={(props) => <MyDownloads {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>

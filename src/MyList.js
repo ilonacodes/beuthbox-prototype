@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'react-emotion';
 import {Navigation} from './Navigation';
 import {css} from 'emotion';
+import {Footer} from './Dashboard';
+import facebook from './img/facebook.png';
+import instagram from './img/instagram.png';
 
 const MainContainer = styled('div')`
   display: flex;
@@ -40,12 +43,12 @@ const row = css`
   }
 `;
 
-export const MyList = ({onSetSidebarOpen}) => {
+export const MyList = ({onSetSidebarOpen, title = "Meine Liste"}) => {
     return (
         <div>
             <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
             <MainContainer>
-                <h2>Meine Liste</h2>
+                <h2>{title}</h2>
                 <div className={row}>
                     <img src="https://via.placeholder.com/200x150?text=Video Titel 1"/>
                     <img src="https://via.placeholder.com/200x150?text=Video Titel 2"/>
@@ -61,6 +64,10 @@ export const MyList = ({onSetSidebarOpen}) => {
                     <img src="https://via.placeholder.com/200x150?text=Video Titel 10"/>
                 </div>
             </MainContainer>
+            <Footer>
+                <img src={facebook}/>
+                <img src={instagram}/>
+            </Footer>
         </div>
     )
 };

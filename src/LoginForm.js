@@ -4,7 +4,6 @@ import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
 import {Footer} from './Dashboard';
 import {css} from 'emotion';
-import {Link} from 'react-router-dom';
 
 const userDataContainer = css`
   display: flex;
