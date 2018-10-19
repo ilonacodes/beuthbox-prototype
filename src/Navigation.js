@@ -49,38 +49,14 @@ const NavContainer = styled('div')`
   box-shadow: 3px 4px 4px -1px rgba(0,0,0,0.75);
 `;
 
-export const sidebarStyles = css`
-  width: 300px;
-  height: 100vh !important;
-  background-color: dimgray;  
-  position: absolute;
-  left: 0;
-  top: 0;
-`;
 
 
 export class Navigation extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            visibleSideBar: false
-        };
-
-        this.toggleSideBarVisibility = this.toggleSideBarVisibility.bind(this);
-    }
-
-    toggleSideBarVisibility() {
-        this.setState({
-            visibleSideBar: !this.state.visibleSideBar
-        })
-    }
-
     render() {
         return (
             <NavContainer>
                 <div className={hamburgerMenu}
-                     onClick={this.props.onSetSidebarOpen}
+                     onClick={() => this.props.onSetSidebarOpen(true)}
                 >&#9776;</div>
                 <div><img className={Logo} src={logo} alt=""/></div>
                 <div className={searchInput}><input type="text" placeholder="Search"/></div>

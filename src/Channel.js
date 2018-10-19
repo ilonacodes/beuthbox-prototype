@@ -42,8 +42,9 @@ export const channels = css`
 
 export const link = css`
   text-decoration: none;
+  color: white;
   &:visited, &:hover, &:active {
-  color: inherit;
+  color: white;
 }
 `;
 

@@ -11,6 +11,10 @@ import {ChannelDetails} from './ChannelDetails';
 import {LoginForm} from './LoginForm';
 import {MyList} from './MyList';
 import {MyDownloads} from './MyDownloads';
+import {ImageFilms} from './ImageFilms';
+import {CampusEvents} from './CampusEvents';
+import {Research} from './Research';
+import {StudentProject} from './StudentProject';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -187,15 +191,22 @@ class AppComponent extends Component {
             isLoggedIn: false
         };
 
-        this.props.history.listen(() => {
-            this.setState({
-                sidebarOpen: false
-            })
-        });
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
+    }
+
+    componentDidMount() {
+        this.unlisten = this.props.history.listen(() => {
+            this.setState({
+                sidebarOpen: false
+            })
+        });
+    }
+
+    componentWillUnmount() {
+        this.unlisten()
     }
 
     onSetSidebarOpen(open) {
@@ -250,10 +261,19 @@ class AppComponent extends Component {
 
                                     <div>
                                         <p className='active'>Kategorien:</p>
-                                        <p>Image-Filme</p>
-                                        <p>Campus-Event</p>
-                                        <p>Forschung</p>
-                                        <p>Studenten-Projekte</p>
+                                        <Link to="/image-films/" className={link}>
+                                            <p>Image-Filme</p>
+                                        </Link>
+                                        <Link to="/campus-events/" className={link}>
+                                            <p>Campus-Event</p>
+                                        </Link>
+                                        <Link to="/research/" className={link}>
+                                            <p>Forschung</p>
+                                        </Link>
+                                        <Link to="/student-projects/" className={link}>
+                                            <p>Studenten-Projekte</p>
+                                        </Link>
+
                                     </div>
 
                                 </FilterList>
@@ -285,6 +305,10 @@ class AppComponent extends Component {
                         <Route exact path="/login/" render={(props) => <LoginForm {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/my-video-list/" render={(props) => <MyList {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/my-downloads/" render={(props) => <MyDownloads {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/image-films/" render={(props) => <ImageFilms {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/campus-events/" render={(props) => <CampusEvents {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/research/" render={(props) => <Research {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/student-projects/" render={(props) => <StudentProject {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>
