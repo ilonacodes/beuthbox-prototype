@@ -15,6 +15,7 @@ import {ImageFilms} from './ImageFilms';
 import {CampusEvents} from './CampusEvents';
 import {Research} from './Research';
 import {StudentProject} from './StudentProject';
+import {SearchResults} from './SearchResults';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -309,6 +310,7 @@ class AppComponent extends Component {
                         <Route exact path="/campus-events/" render={(props) => <CampusEvents {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/research/" render={(props) => <Research {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/student-projects/" render={(props) => <StudentProject {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/search-results/" render={(props) => <SearchResults {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>

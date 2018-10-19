@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import {css} from 'emotion';
 import logo from './img/logo.png';
+import {withRouter} from 'react-router';
 
 const hamburgerMenu = css`
   font-size: 28px;
@@ -51,7 +52,18 @@ const NavContainer = styled('div')`
 
 
 
-export class Navigation extends React.Component {
+class NavigationComponent extends React.Component {
+    constructor() {
+        super();
+
+        this.search = this.search.bind(this)
+    }
+
+    search(e) {
+        if(e.keyCode === 13) {
+            this.props.history.push('/search-results/');
+        }
+    }
     render() {
         return (
             <NavContainer>
@@ -59,8 +71,12 @@ export class Navigation extends React.Component {
                      onClick={() => this.props.onSetSidebarOpen(true)}
                 >&#9776;</div>
                 <div><img className={Logo} src={logo} alt=""/></div>
-                <div className={searchInput}><input type="text" placeholder="Search"/></div>
+                <div className={searchInput}>
+                    <input type="text" placeholder="Search" onKeyUp={this.search}/>
+                </div>
             </NavContainer>
         );
     }
 };
+
+export const Navigation = withRouter(NavigationComponent);
