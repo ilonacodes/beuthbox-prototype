@@ -1,9 +1,10 @@
 {
-  "main.css": "/beuthbox-prototype/static/css/main.18246563.chunk.css",
-  "main.js": "/beuthbox-prototype/static/js/main.ff1546ac.chunk.js",
-  "main.js.map": "/beuthbox-prototype/static/js/main.ff1546ac.chunk.js.map",
-  "static/js/1.d8c9c413.chunk.js": "/beuthbox-prototype/static/js/1.d8c9c413.chunk.js",
-  "static/js/1.d8c9c413.chunk.js.map": "/beuthbox-prototype/static/js/1.d8c9c413.chunk.js.map",
+  "main.css": "/beuthbox-prototype/static/css/main.f39262c3.chunk.css",
+  "main.js": "/beuthbox-prototype/static/js/main.bd830c2e.chunk.js",
+  "main.js.map": "/beuthbox-prototype/static/js/main.bd830c2e.chunk.js.map",
+  "static/css/1.c26d41ec.chunk.css": "/beuthbox-prototype/static/css/1.c26d41ec.chunk.css",
+  "static/js/1.32b63f7a.chunk.js": "/beuthbox-prototype/static/js/1.32b63f7a.chunk.js",
+  "static/js/1.32b63f7a.chunk.js.map": "/beuthbox-prototype/static/js/1.32b63f7a.chunk.js.map",
   "runtime~main.js": "/beuthbox-prototype/static/js/runtime~main.be03fc6f.js",
   "runtime~main.js.map": "/beuthbox-prototype/static/js/runtime~main.be03fc6f.js.map",
   "static/media/facebook.png": "/beuthbox-prototype/static/media/facebook.9f8c41fe.png",
@@ -13,8 +14,9 @@
   "static/media/arrow-right.svg.png": "/beuthbox-prototype/static/media/arrow-right.svg.caa5d622.png",
   "static/media/arrow-left.svg.png": "/beuthbox-prototype/static/media/arrow-left.svg.a9644974.png",
   "static/media/instagram.png": "/beuthbox-prototype/static/media/instagram.80323c10.png",
-  "static/css/main.18246563.chunk.css.map": "/beuthbox-prototype/static/css/main.18246563.chunk.css.map",
+  "static/css/main.f39262c3.chunk.css.map": "/beuthbox-prototype/static/css/main.f39262c3.chunk.css.map",
+  "static/css/1.c26d41ec.chunk.css.map": "/beuthbox-prototype/static/css/1.c26d41ec.chunk.css.map",
   "index.html": "/beuthbox-prototype/index.html",
-  "precache-manifest.ec0cc66b5810f300da9b363f36f1c4ae.js": "/beuthbox-prototype/precache-manifest.ec0cc66b5810f300da9b363f36f1c4ae.js",
+  "precache-manifest.2c38f8ec41406306275d3c345a61d13e.js": "/beuthbox-prototype/precache-manifest.2c38f8ec41406306275d3c345a61d13e.js",
   "service-worker.js": "/beuthbox-prototype/service-worker.js"
 }
