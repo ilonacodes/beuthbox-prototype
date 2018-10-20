@@ -10,7 +10,7 @@ const MainContainer = styled('div')`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  margin: 100px 30px 0 30px;
+  margin: 100px 40px 0 40px;
   
   h2 {
     font-size: 28px;
