@@ -36,7 +36,7 @@ class Option extends React.Component {
 
         this.state = {
             value: false
-        }
+        };
 
         this.onToggleButton = this.onToggleButton.bind(this)
     }

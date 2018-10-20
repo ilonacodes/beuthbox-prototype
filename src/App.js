@@ -18,6 +18,7 @@ import {StudentProject} from './StudentProject';
 import {SearchResults} from './SearchResults';
 import {LiveStreams} from './LiveStreams';
 import {Settings} from './Settings';
+import {Account} from './Account';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -175,7 +176,7 @@ const UserSettings = ({isLoggedIn, logout}) => {
         return (
             <div>
                 <Link to="/settings/" className={link}><p>Einstellungen</p></Link>
-                <p>Konto</p>
+                <Link to="/account/" className={link}><p>Konto</p></Link>
                 <a onClick={logout}>Ausloggen</a>
             </div>
         )
@@ -315,6 +316,7 @@ class AppComponent extends Component {
                         <Route exact path="/search-results/" render={(props) => <SearchResults {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/live-streams/" render={(props) => <LiveStreams {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/settings/" render={(props) => <Settings {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/account/" render={(props) => <Account {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>
