@@ -12,9 +12,7 @@ import instagram from './img/instagram.png'
 export const channels = css`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin: 80px 40px;
   
   img {
     width: 350px;
@@ -37,6 +35,28 @@ export const channels = css`
    padding: 5px 10px;
    text-align: center; 
    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    img {
+      width: 220px;
+      height: 150px;
+    }
+    
+    p {
+      font-size: 10px;
+    }
+  }
+  
+  @media (min-width: 769px)and (max-width: 1025px) {
+    img {
+      width: 260px;
+      height: 200px;
+    }
+    
+    p {
+      font-size: 14px;
+    }
   }
 `;
 
