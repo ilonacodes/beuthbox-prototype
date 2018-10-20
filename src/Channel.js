@@ -57,6 +57,7 @@ export const title = css`
   font-size: 28px;
   color: #00A5A5 !important;
   margin: 20px 40px 40px 40px;
+  font-weight: bold;
 `;
 
 const Channels = ({headline}) => {

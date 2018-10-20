@@ -16,6 +16,7 @@ import {CampusEvents} from './CampusEvents';
 import {Research} from './Research';
 import {StudentProject} from './StudentProject';
 import {SearchResults} from './SearchResults';
+import {LiveStreams} from './LiveStreams';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -252,7 +253,7 @@ class AppComponent extends Component {
                                             </Asset>
                                         </Link>
 
-                                        <Link to="/channels" className={link}>
+                                        <Link to="/live-streams" className={link}>
                                             <Asset className={channelStyle}>
                                                 <p>Live-Streams</p>
                                                 <span>{`>`}</span>
@@ -311,6 +312,7 @@ class AppComponent extends Component {
                         <Route exact path="/research/" render={(props) => <Research {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/student-projects/" render={(props) => <StudentProject {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/search-results/" render={(props) => <SearchResults {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/live-streams/" render={(props) => <LiveStreams {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                     </AppContent>
                 </Sidebar>
             </div>
