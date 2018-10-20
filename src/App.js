@@ -20,6 +20,7 @@ import {LiveStreams} from './LiveStreams';
 import {Settings} from './Settings';
 import {Account} from './Account';
 import {PrivacyPolicy} from './PrivacyPolicy';
+import {Help} from './Help';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -289,8 +290,8 @@ class AppComponent extends Component {
                                 <FilterList>
                                     <div>
                                         <UserSettings isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-                                        <Link to="/privacy-policy" className={link}><p>Datenschutz</p></Link>
-                                        <p>Hilfe</p>
+                                        <Link to="/privacy-policy/" className={link}><p>Datenschutz</p></Link>
+                                        <Link to="/help/" className={link}><p>Hilfe</p></Link>
                                     </div>
                                 </FilterList>
                             </Assets>
@@ -319,6 +320,7 @@ class AppComponent extends Component {
                         <Route exact path="/settings/" render={(props) => <Settings {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/account/" render={(props) => <Account {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/privacy-policy/" render={(props) => <PrivacyPolicy {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/help/" render={(props) => <Help {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
 
                     </AppContent>
                 </Sidebar>

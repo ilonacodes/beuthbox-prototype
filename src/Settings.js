@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigation} from './Navigation';
 import {Footer} from './Dashboard';
 import facebook from './img/facebook.png';
-import instagram from './img/instagram.png'
+import instagram from './img/instagram.png';
 import {css} from 'emotion';
 import styled from 'react-emotion';
 import ToggleButton from 'react-toggle-button'
