@@ -11,13 +11,13 @@ import instagram from './img/instagram.png';
 const VideoDetailsContainer = styled('div')`
   background-color: #222 !important;
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  height: 100%;
-  min-height: 75vh;
   margin-top: 20px;
-  margin-right: 50px;
   margin-bottom: 30px;
+  
+  @media (max-width: 769px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftSideDetails = styled('div')`
@@ -71,7 +71,7 @@ const playVideoButton = css`
 export const VideoTitle = styled('div')`
   font-size: 28px;
   color: #00A5A5;
-  margin: 20px 0;
+  margin: 30px 0 15px 0;
   
 `;
 
@@ -258,6 +258,12 @@ const TimeLink = styled('span')`
   text-decoration: underline;
   margin-top: -3px;
   cursor: pointer;
+`;
+
+const Producers = styled('div')`
+  display: flex;
+  flex-direction: column;
+  color: white;
 `;
 
 class InteractiveAccordion extends React.Component {
@@ -511,6 +517,15 @@ export const VideoDetails = ({onSetSidebarOpen}) => {
                         <p>Folien zur Vorlesung am 02.01.2018</p>
                         <button>Herunterladen</button>
                     </Downloads>
+
+                    <Producers>
+                        <VideoTitle>Produzenten</VideoTitle>
+                        <div>
+                            <p>Prof. Dr. Max Musterhaus</p>
+                            <p>Maria Müller</p>
+                            <p>Sabrina Mustermann</p>
+                        </div>
+                    </Producers>
 
                 </RightSideDetails>
             </VideoDetailsContainer>
