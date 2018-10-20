@@ -9,22 +9,20 @@ import instagram from './img/instagram.png';
 const MainContainer = styled('div')`
   display: flex;
   justify-content: space-around;
-  width: 100%;
   flex-direction: column;
-  margin-top: 100px;
+  margin: 100px 30px 0 30px;
   
   h2 {
     font-size: 28px;
     color: #00A5A5;
     letter-spacing: 1px;
-    text-align: center;
   }
 `;
 
 const row = css`
   display: flex;
-  justify-content: space-around;
-  margin: 25px;
+  justify-content: space-between;
+  margin: 25px 25px 25px 0;
   
   @media (max-width: 768px) {
     margin: 25px 15px;
