@@ -19,6 +19,7 @@ import {SearchResults} from './SearchResults';
 import {LiveStreams} from './LiveStreams';
 import {Settings} from './Settings';
 import {Account} from './Account';
+import {PrivacyPolicy} from './PrivacyPolicy';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -288,7 +289,7 @@ class AppComponent extends Component {
                                 <FilterList>
                                     <div>
                                         <UserSettings isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-                                        <p>Datenschutz</p>
+                                        <Link to="/privacy-policy" className={link}><p>Datenschutz</p></Link>
                                         <p>Hilfe</p>
                                     </div>
                                 </FilterList>
@@ -317,6 +318,8 @@ class AppComponent extends Component {
                         <Route exact path="/live-streams/" render={(props) => <LiveStreams {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/settings/" render={(props) => <Settings {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/account/" render={(props) => <Account {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/privacy-policy/" render={(props) => <PrivacyPolicy {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+
                     </AppContent>
                 </Sidebar>
             </div>

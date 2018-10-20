@@ -5,7 +5,6 @@ import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
 import styled from 'react-emotion';
 import {css} from 'emotion';
-import {OptionContainer} from './Settings';
 
 const AccountContainer = styled('div')`
   display: flex;
