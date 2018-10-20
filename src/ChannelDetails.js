@@ -9,7 +9,6 @@ import instagram from './img/instagram.png';
 const channelsDetails = css`
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin-top: 80px;
   margin-bottom: 80px;
   
@@ -48,6 +47,20 @@ const subtitle = css`
 const eventContainer = css`
   display: flex;
   justify-content: space-around;
+  margin: 0 20px;
+  
+  @media (max-width: 768px) {
+    img {
+      width: 110px;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1025px) {
+    img {
+      width: 160px;
+    }
+  }
+
 `;
 
 const event = css`
