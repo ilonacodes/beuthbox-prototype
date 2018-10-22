@@ -121,6 +121,22 @@ const Tags = styled('div')`
   }
 `;
 
+const downloadNotes = css`
+    color: white;
+    background-color: #00A5A5;
+    border: 0;
+    height: 22px;
+    border-radius: 5px;
+    align-self: center;
+    outline: 0;
+    margin-top: 20px;
+    margin-left: -15px;
+    
+    &:hover {
+      cursor: pointer;
+    }
+`;
+
 const Accordion = styled('div')`
    display: flex;
    justify-content: space-between;
@@ -302,10 +318,11 @@ class InteractiveAccordion extends React.Component {
 
 const Notes = () => (
     <ul>
-        <li>Notiz 1</li>
-        <li>Notiz 2</li>
-        <li>Notiz 3</li>
+        <li>Notiz 1: Lorem ipsum dolor sit amet elit.</li>
+        <li>Notiz 2: Lorem ipsum dolor sit amet elit.</li>
+        <li>Notiz 3: Lorem ipsum dolor sit amet elit.</li>
         <li>usw.</li>
+        <button className={downloadNotes}>Herunterladen</button>
     </ul>
 );
 
