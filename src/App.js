@@ -21,6 +21,9 @@ import {Settings} from './Settings';
 import {Account} from './Account';
 import {PrivacyPolicy} from './PrivacyPolicy';
 import {Help} from './Help';
+import {AllVideosByCategoryNew} from './AllVideosByCategoryNew';
+import {AllVideosRecommendations} from './AllVideosRecommendations';
+import {PopularVideos} from './PopularVideos';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -321,6 +324,9 @@ class AppComponent extends Component {
                         <Route exact path="/account/" render={(props) => <Account {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/privacy-policy/" render={(props) => <PrivacyPolicy {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/help/" render={(props) => <Help {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/new-publications/" render={(props) => <AllVideosByCategoryNew {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/video-recommendations/" render={(props) => <AllVideosRecommendations {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/popular-videos/" render={(props) => <PopularVideos {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
 
                     </AppContent>
                 </Sidebar>

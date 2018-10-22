@@ -80,6 +80,14 @@ const Category = styled('div')`
   font-weight: 600;
 `;
 
+const categoryLink = css`
+  text-decoration: none !important;
+  &:visited, &:hover, &:active {
+  color: #00A5A5;
+  cursor: pointer;
+  }
+`;
+
 export const VideosContainerImg = styled('div')`
 
   width: 100%;
@@ -395,7 +403,7 @@ class Content extends React.Component {
                 </Bullets>
                 <VideosContainer>
                     <VideosByCategory>
-                        <Category>Neuerscheinungen</Category>
+                        <Link to="/new-publications/" className={categoryLink}><Category>Neuerscheinungen</Category></Link>
                         <Videos images={[
                             'https://via.placeholder.com/200x150?text=first',
                             'https://via.placeholder.com/200x150?text=second',
@@ -410,7 +418,7 @@ class Content extends React.Component {
                         ]}/>
                     </VideosByCategory>
                     <VideosByCategory>
-                        <Category>Empfehlungen der Redaktion</Category>
+                        <Link to="/video-recommendations/" className={categoryLink}><Category>Empfehlungen der Redaktion</Category></Link>
                         <Videos images={[
                             'https://via.placeholder.com/200x150?text=first',
                             'https://via.placeholder.com/200x150?text=second',
@@ -425,7 +433,7 @@ class Content extends React.Component {
                         ]}/>
                     </VideosByCategory>
                     <VideosByCategory>
-                        <Category>Derzeit beliebt</Category>
+                        <Link to="/popular-videos/" className={categoryLink}><Category>Derzeit beliebt</Category></Link>
                         <Videos images={[
                             'https://via.placeholder.com/200x150?text=first',
                             'https://via.placeholder.com/200x150?text=second',
