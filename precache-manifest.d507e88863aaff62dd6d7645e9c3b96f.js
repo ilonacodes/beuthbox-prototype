@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/beuthbox-prototype/static/media/instagram.80323c10.png"
   },
   {
-    "revision": "bd830c2eaf17dc230e51",
+    "revision": "5e9a45e5b560db540c10",
     "url": "/beuthbox-prototype/static/css/main.f39262c3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/beuthbox-prototype/static/media/arrow-left.svg.a9644974.png"
   },
   {
-    "revision": "32b63f7ac5b48baf37d7",
-    "url": "/beuthbox-prototype/static/js/1.32b63f7a.chunk.js"
+    "revision": "e10e2b8d21beb2223f9c",
+    "url": "/beuthbox-prototype/static/js/1.e10e2b8d.chunk.js"
   },
   {
     "revision": "be03fc6f5aa0511be1f1",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/beuthbox-prototype/static/media/facebook.9f8c41fe.png"
   },
   {
-    "revision": "bd830c2eaf17dc230e51",
-    "url": "/beuthbox-prototype/static/js/main.bd830c2e.chunk.js"
+    "revision": "5e9a45e5b560db540c10",
+    "url": "/beuthbox-prototype/static/js/main.5e9a45e5.chunk.js"
   },
   {
     "revision": "f3dea132f3b1218fd2073b6ddd9cf795",
@@ -44,11 +44,11 @@ self.__precacheManifest = [
     "url": "/beuthbox-prototype/static/media/arrow-right.svg.caa5d622.png"
   },
   {
-    "revision": "32b63f7ac5b48baf37d7",
+    "revision": "e10e2b8d21beb2223f9c",
     "url": "/beuthbox-prototype/static/css/1.c26d41ec.chunk.css"
   },
   {
-    "revision": "e2893d9e5d2e0be1238208ccfb7ae418",
+    "revision": "86e1fb9d49c066b83ae6067504e68e25",
     "url": "/beuthbox-prototype/index.html"
   }
 ];
