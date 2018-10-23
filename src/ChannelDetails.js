@@ -1,10 +1,11 @@
 import React from 'react';
 import {Navigation} from './Navigation';
-import {title} from './Channel';
+import {link, title} from './Channel';
 import {css} from 'emotion';
 import {Footer, Videos, VideosByCategory, VideosContainer, VideosContainerImg} from './Dashboard';
 import facebook from './img/facebook.png';
 import instagram from './img/instagram.png';
+import {Link} from 'react-router-dom';
 
 const channelsDetails = css`
   display: flex;
@@ -38,10 +39,20 @@ const description = css`
   margin: 20px 40px;
 `;
 
-const subtitle = css`
+export const subtitle = css`
   font-size: 22px;
   color: red !important;
   margin: -10px 40px 0px 40px;
+`;
+
+const channelLink = css`
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &:visited, &:focus, &:hover {
+    outline: none;
+  }
 `;
 
 const eventContainer = css`
@@ -72,7 +83,7 @@ const ChannelDetailsContainer = () => {
     return (
         <div className={channelsDetails}>
             <div className={title}>Channel</div>
-            <div className={subtitle}>MBA Renewables</div>
+            <div className={subtitle}><Link to="channel-videos" className={channelLink}>MBA Renewables</Link></div>
             <VideosContainer>
                 <VideosByCategory>
                     <VideosContainerImg>
@@ -91,7 +102,7 @@ const ChannelDetailsContainer = () => {
             <div className={description}>Master of Business Renewables Alumni Conference</div>
 
             <div className={title}>Videos</div>
-            <div className={subtitle}>Beispiel-Kategorie 1</div>
+            <div className={subtitle}><Link to="/channel-videos/" className={channelLink}>Beispiel-Kategorie 1</Link></div>
             <VideosContainer>
                 <VideosByCategory>
                     <VideosContainerImg>
@@ -109,7 +120,7 @@ const ChannelDetailsContainer = () => {
                 </VideosByCategory>
             </VideosContainer>
 
-            <div className={`${subtitle}`} style={{marginTop: '40px'}}>Beispiel-Kategorie 2</div>
+            <div className={`${subtitle}`} style={{marginTop: '40px'}}><Link to="/channel-videos/" className={channelLink}>Beispiel-Kategorie 2</Link></div>
             <VideosContainer>
                 <VideosByCategory>
                     <VideosContainerImg>

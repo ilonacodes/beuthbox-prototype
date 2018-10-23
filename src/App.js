@@ -24,6 +24,7 @@ import {Help} from './Help';
 import {AllVideosByCategoryNew} from './AllVideosByCategoryNew';
 import {AllVideosRecommendations} from './AllVideosRecommendations';
 import {PopularVideos} from './PopularVideos';
+import {ChannelAllVideos} from './ChannelAllVideos';
 
 const AppContent = styled('div')`
   padding-bottom: 80px;
@@ -327,6 +328,7 @@ class AppComponent extends Component {
                         <Route exact path="/new-publications/" render={(props) => <AllVideosByCategoryNew {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/video-recommendations/" render={(props) => <AllVideosRecommendations {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
                         <Route exact path="/popular-videos/" render={(props) => <PopularVideos {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
+                        <Route exact path="/channel-videos/" render={(props) => <ChannelAllVideos {...props} onSetSidebarOpen={this.onSetSidebarOpen} login={this.login} />}/>
 
                     </AppContent>
                 </Sidebar>
