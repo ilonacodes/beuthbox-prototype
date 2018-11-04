@@ -66,7 +66,7 @@ export const Settings = ({onSetSidebarOpen}) => {
         <div>
             <Navigation onSetSidebarOpen={onSetSidebarOpen}/>
             <SettingsContainer>
-                <div className={title}><p>Live-Streams</p></div>
+                <div className={title}><p>Einstellungen</p></div>
                 <Option title="Video als Overlay zur Vorschau anzeigen"/>
                 <Option title="Videos nur im WLAN herunterladen"/>
                 <Option title="Dunkles Design"/>
@@ -77,4 +77,4 @@ export const Settings = ({onSetSidebarOpen}) => {
             </Footer>
         </div>
     );
-}
+};

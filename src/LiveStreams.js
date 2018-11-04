@@ -93,10 +93,6 @@ class LiveStreamsContent extends React.Component {
     constructor(props) {
         super(props);
 
-        let createdAt = moment(new Date());
-
-        console.log('init created-at', createdAt);
-
         this.state = {
             createdAt: null,
             calenderFocused: false,

@@ -6,3 +6,4 @@ export const MyDownloads = ({onSetSidebarOpen}) => {
         <MyList title="Downloads" onSetSidebarOpen={onSetSidebarOpen} />
     )
 };
+

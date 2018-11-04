@@ -5,4 +5,4 @@ export const StudentProject = ({onSetSidebarOpen}) => {
     return (
         <MyList title="Studenten-Projekte" onSetSidebarOpen={onSetSidebarOpen} />
     );
-}
+};

@@ -192,7 +192,6 @@ const UserSettings = ({isLoggedIn, logout}) => {
 };
 
 class AppComponent extends Component {
-
     constructor(props) {
         super(props);
 
@@ -206,7 +205,6 @@ class AppComponent extends Component {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
-
     componentDidMount() {
         this.unlisten = this.props.history.listen(() => {
             this.setState({
@@ -214,21 +212,17 @@ class AppComponent extends Component {
             })
         });
     }
-
     componentWillUnmount() {
         this.unlisten()
     }
-
     onSetSidebarOpen(open) {
         this.setState({sidebarOpen: open});
     }
-
     logout() {
         this.setState({
             isLoggedIn: false
         })
     }
-
     login() {
         this.setState({
             isLoggedIn: true

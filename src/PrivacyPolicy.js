@@ -68,4 +68,4 @@ export const PrivacyPolicy = ({onSetSidebarOpen}) => {
             </Footer>
         </div>
     );
-}
+};
